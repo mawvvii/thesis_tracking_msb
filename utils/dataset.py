@@ -36,7 +36,7 @@ def get_dataloader(dataset_name, split, batch_size, \
     loader = None
 
     if dataset_name == 'CIFAR10':
-        data_root_list = ['/home/shangyu/CIFAR10', '/home/sinno/csy/CIFAR10', '/data/CIFAR10', '~/Documents/datasets/CIFAR10']
+        data_root_list = ['/scratch/users/Maryam/L-DNQ/data/CIFAR10','/home/shangyu/CIFAR10', '/home/sinno/csy/CIFAR10', '/data/CIFAR10', '~/Documents/datasets/CIFAR10']
         # Default data root
         data_root = data_root_list[0]
         for data_root in data_root_list:
@@ -106,7 +106,7 @@ def get_dataloader(dataset_name, split, batch_size, \
 
 if __name__ == '__main__':
 
-    loader = get_dataloader('ImageNet', 'train', 128)
+    loader = get_dataloader('CIFAR10', 'train', 128)
 
     for inputs, targets in loader:
         print(targets)

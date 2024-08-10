@@ -12,9 +12,9 @@ import numpy as np
 
 # Construct hessian computing graph for res layer (conv layer without bias)
 def create_res_hessian_computing_tf_graph(input_shape, layer_kernel, layer_stride):
-
-    input_holder = tf.placeholder(dtype=tf.float32, shape=input_shape)
-    patches = tf.extract_image_patches(images = input_holder,
+    tf.compat.v1.disable_eager_execution()
+    input_holder = tf.compat.v1.placeholder(dtype=tf.float32, shape=input_shape)
+    patches = tf.compat.v1.extract_image_patches(images = input_holder,
                                        ksizes = [1,layer_kernel, layer_kernel,1],
                                        strides = [1, layer_stride, layer_stride, 1],
                                        rates = [1, 1, 1, 1],
@@ -31,8 +31,8 @@ def create_res_hessian_computing_tf_graph(input_shape, layer_kernel, layer_strid
 
 # Construct hessian computing graph for fc layer
 def create_fc_hessian_computing_tf_graph(input_shape):
-
-    input_holder = tf.placeholder(dtype=tf.float32, shape=input_shape)
+    tf.compat.v1.disable_eager_execution()
+    input_holder = tf.compat.v1.placeholder(dtype=tf.float32, shape=input_shape)
     a = tf.expand_dims(input_holder, axis=-1)
     vect_w_b = tf.concat([a, tf.ones([tf.shape(a)[0], 1, 1])], axis=1)
     outprod = tf.matmul(vect_w_b, vect_w_b, transpose_b=True)
@@ -44,8 +44,8 @@ def create_fc_hessian_computing_tf_graph(input_shape):
 
 # Construct hessian computing graph for fc- layer
 def create_fc_minus_hessian_computing_tf_graph(input_shape):
-
-    input_holder = tf.placeholder(dtype=tf.float32, shape=input_shape)
+    tf.compat.v1.disable_eager_execution()
+    input_holder = tf.compat.v1.placeholder(dtype=tf.float32, shape=input_shape)
     a = tf.expand_dims(input_holder, axis=-1)
     outprod = tf.matmul(a, a, transpose_b=True)
     # print 'outprod shape: %s' %outprod.get_shape()
@@ -56,9 +56,9 @@ def create_fc_minus_hessian_computing_tf_graph(input_shape):
 
 # Construct hessian computing graph
 def create_conv_hessian_computing_tf_graph(input_shape, layer_kernel, layer_stride):
-
-    input_holder = tf.placeholder(dtype=tf.float32, shape=input_shape)
-    patches = tf.extract_image_patches(images = input_holder,
+    tf.compat.v1.disable_eager_execution()
+    input_holder = tf.compat.v1.placeholder(dtype=tf.float32, shape=input_shape)
+    patches = tf.compat.v1.extract_image_patches(images = input_holder,
                                        ksizes = [1,layer_kernel, layer_kernel,1],
                                        strides = [1, layer_stride, layer_stride, 1],
                                        rates = [1, 1, 1, 1],
@@ -77,9 +77,9 @@ def create_conv_hessian_computing_tf_graph(input_shape, layer_kernel, layer_stri
 
 def generate_hessian(net, trainloader, layer_name, layer_type, n_batch_used = 100, batch_size = 2, stride_factor = 3):
 
-    config = tf.ConfigProto()
+    config = tf.compat.v1.ConfigProto()
     config.gpu_options.allow_growth=True
-    sess = tf.Session(config=config)
+    sess = tf.compat.v1.Session(config=config)
 
     if 'module' in layer_name:
         layer_name = layer_name[7:]

@@ -1,0 +1,1116 @@
+Process layer module.conv1
+[batch idx: 0] [  0] Cascade training avg loss: 0.039054
+[batch idx: 0] [  1] Cascade training avg loss: 0.041093
+[batch idx: 0] [  2] Cascade training avg loss: 0.039755
+[batch idx: 0] [  3] Cascade training avg loss: 0.038056
+[batch idx: 0] [  4] Cascade training avg loss: 0.036910
+[batch idx: 0] [  5] Cascade training avg loss: 0.034715
+[batch idx: 0] [  6] Cascade training avg loss: 0.033140
+[batch idx: 0] [  7] Cascade training avg loss: 0.031790
+[batch idx: 0] [  8] Cascade training avg loss: 0.030398
+[batch idx: 0] [  9] Cascade training avg loss: 0.029028
+[batch idx: 0] [ 10] Cascade training avg loss: 0.027932
+[batch idx: 0] [ 11] Cascade training avg loss: 0.026995
+[batch idx: 0] [ 12] Cascade training avg loss: 0.026175
+[batch idx: 0] [ 13] Cascade training avg loss: 0.025444
+[batch idx: 0] [ 14] Cascade training avg loss: 0.024683
+[batch idx: 0] [ 15] Cascade training avg loss: 0.023998
+[batch idx: 0] [ 16] Cascade training avg loss: 0.023390
+[batch idx: 0] [ 17] Cascade training avg loss: 0.022832
+[batch idx: 0] [ 18] Cascade training avg loss: 0.022330
+[batch idx: 0] [ 19] Cascade training avg loss: 0.021831
+[batch idx: 0] [ 20] Cascade training avg loss: 0.021403
+[batch idx: 0] [ 21] Cascade training avg loss: 0.020975
+[batch idx: 0] [ 22] Cascade training avg loss: 0.020592
+[batch idx: 0] [ 23] Cascade training avg loss: 0.020180
+[batch idx: 0] [ 24] Cascade training avg loss: 0.019806
+[batch idx: 0] [ 25] Cascade training avg loss: 0.019445
+[batch idx: 0] [ 26] Cascade training avg loss: 0.019099
+[batch idx: 0] [ 27] Cascade training avg loss: 0.018783
+[batch idx: 0] [ 28] Cascade training avg loss: 0.018490
+[batch idx: 0] [ 29] Cascade training avg loss: 0.018202
+[batch idx: 0] [ 30] Cascade training avg loss: 0.017904
+[batch idx: 0] [ 31] Cascade training avg loss: 0.017628
+[batch idx: 0] [ 32] Cascade training avg loss: 0.017374
+[batch idx: 0] [ 33] Cascade training avg loss: 0.017139
+[batch idx: 0] [ 34] Cascade training avg loss: 0.016920
+[batch idx: 0] [ 35] Cascade training avg loss: 0.016706
+[batch idx: 0] [ 36] Cascade training avg loss: 0.016509
+[batch idx: 0] [ 37] Cascade training avg loss: 0.016299
+[batch idx: 0] [ 38] Cascade training avg loss: 0.016110
+[batch idx: 0] [ 39] Cascade training avg loss: 0.015913
+[batch idx: 0] [ 40] Cascade training avg loss: 0.015735
+[batch idx: 0] [ 41] Cascade training avg loss: 0.015553
+[batch idx: 0] [ 42] Cascade training avg loss: 0.015400
+[batch idx: 0] [ 43] Cascade training avg loss: 0.015240
+[batch idx: 0] [ 44] Cascade training avg loss: 0.015084
+[batch idx: 0] [ 45] Cascade training avg loss: 0.014949
+[batch idx: 0] [ 46] Cascade training avg loss: 0.014800
+[batch idx: 0] [ 47] Cascade training avg loss: 0.014657
+[batch idx: 0] [ 48] Cascade training avg loss: 0.014520
+[batch idx: 0] [ 49] Cascade training avg loss: 0.014381
+[batch idx: 0] [ 50] Cascade training avg loss: 0.014241
+[batch idx: 0] [ 51] Cascade training avg loss: 0.014124
+[batch idx: 0] [ 52] Cascade training avg loss: 0.013998
+[batch idx: 0] [ 53] Cascade training avg loss: 0.013885
+[batch idx: 0] [ 54] Cascade training avg loss: 0.013770
+[batch idx: 0] [ 55] Cascade training avg loss: 0.013666
+[batch idx: 0] [ 56] Cascade training avg loss: 0.013556
+[batch idx: 0] [ 57] Cascade training avg loss: 0.013453
+[batch idx: 0] [ 58] Cascade training avg loss: 0.013352
+[batch idx: 0] [ 59] Cascade training avg loss: 0.013262
+[batch idx: 0] [ 60] Cascade training avg loss: 0.013157
+[batch idx: 0] [ 61] Cascade training avg loss: 0.013060
+[batch idx: 0] [ 62] Cascade training avg loss: 0.012965
+[batch idx: 0] [ 63] Cascade training avg loss: 0.012876
+Early stop for ascending 3 times.
+Process layer module.layer1.0.conv1
+[batch idx: 0] [  0] Cascade training avg loss: 0.019420
+[batch idx: 0] [  1] Cascade training avg loss: 0.020985
+[batch idx: 0] [  2] Cascade training avg loss: 0.020327
+[batch idx: 0] [  3] Cascade training avg loss: 0.020038
+[batch idx: 0] [  4] Cascade training avg loss: 0.019614
+[batch idx: 0] [  5] Cascade training avg loss: 0.019113
+[batch idx: 0] [  6] Cascade training avg loss: 0.018635
+[batch idx: 0] [  7] Cascade training avg loss: 0.018320
+[batch idx: 0] [  8] Cascade training avg loss: 0.018097
+[batch idx: 0] [  9] Cascade training avg loss: 0.017798
+[batch idx: 0] [ 10] Cascade training avg loss: 0.017568
+[batch idx: 0] [ 11] Cascade training avg loss: 0.017379
+[batch idx: 0] [ 12] Cascade training avg loss: 0.017138
+[batch idx: 0] [ 13] Cascade training avg loss: 0.016958
+[batch idx: 0] [ 14] Cascade training avg loss: 0.016777
+[batch idx: 0] [ 15] Cascade training avg loss: 0.016617
+[batch idx: 0] [ 16] Cascade training avg loss: 0.016431
+[batch idx: 0] [ 17] Cascade training avg loss: 0.016234
+[batch idx: 0] [ 18] Cascade training avg loss: 0.016110
+[batch idx: 0] [ 19] Cascade training avg loss: 0.015990
+[batch idx: 0] [ 20] Cascade training avg loss: 0.015833
+[batch idx: 0] [ 21] Cascade training avg loss: 0.015687
+[batch idx: 0] [ 22] Cascade training avg loss: 0.015550
+[batch idx: 0] [ 23] Cascade training avg loss: 0.015398
+[batch idx: 0] [ 24] Cascade training avg loss: 0.015279
+[batch idx: 0] [ 25] Cascade training avg loss: 0.015185
+[batch idx: 0] [ 26] Cascade training avg loss: 0.015061
+[batch idx: 0] [ 27] Cascade training avg loss: 0.014966
+[batch idx: 0] [ 28] Cascade training avg loss: 0.014896
+[batch idx: 0] [ 29] Cascade training avg loss: 0.014823
+Early stop for ascending 3 times.
+Process layer module.layer1.0.conv2
+[batch idx: 0] [  0] Cascade training avg loss: 0.037021
+[batch idx: 0] [  1] Cascade training avg loss: 0.030083
+[batch idx: 0] [  2] Cascade training avg loss: 0.029590
+[batch idx: 0] [  3] Cascade training avg loss: 0.028631
+[batch idx: 0] [  4] Cascade training avg loss: 0.027729
+[batch idx: 0] [  5] Cascade training avg loss: 0.026998
+[batch idx: 0] [  6] Cascade training avg loss: 0.026301
+[batch idx: 0] [  7] Cascade training avg loss: 0.025603
+[batch idx: 0] [  8] Cascade training avg loss: 0.025079
+[batch idx: 0] [  9] Cascade training avg loss: 0.024728
+[batch idx: 0] [ 10] Cascade training avg loss: 0.024269
+[batch idx: 0] [ 11] Cascade training avg loss: 0.023811
+[batch idx: 0] [ 12] Cascade training avg loss: 0.023415
+[batch idx: 0] [ 13] Cascade training avg loss: 0.022982
+[batch idx: 0] [ 14] Cascade training avg loss: 0.022533
+[batch idx: 0] [ 15] Cascade training avg loss: 0.022201
+[batch idx: 0] [ 16] Cascade training avg loss: 0.021912
+[batch idx: 0] [ 17] Cascade training avg loss: 0.021673
+[batch idx: 0] [ 18] Cascade training avg loss: 0.021447
+[batch idx: 0] [ 19] Cascade training avg loss: 0.021168
+[batch idx: 0] [ 20] Cascade training avg loss: 0.020952
+[batch idx: 0] [ 21] Cascade training avg loss: 0.020753
+[batch idx: 0] [ 22] Cascade training avg loss: 0.020561
+[batch idx: 0] [ 23] Cascade training avg loss: 0.020375
+[batch idx: 0] [ 24] Cascade training avg loss: 0.020164
+[batch idx: 0] [ 25] Cascade training avg loss: 0.020004
+[batch idx: 0] [ 26] Cascade training avg loss: 0.019833
+[batch idx: 0] [ 27] Cascade training avg loss: 0.019671
+[batch idx: 0] [ 28] Cascade training avg loss: 0.019576
+[batch idx: 0] [ 29] Cascade training avg loss: 0.019399
+[batch idx: 0] [ 30] Cascade training avg loss: 0.019318
+[batch idx: 0] [ 31] Cascade training avg loss: 0.019183
+[batch idx: 0] [ 32] Cascade training avg loss: 0.019067
+[batch idx: 0] [ 33] Cascade training avg loss: 0.018960
+[batch idx: 0] [ 34] Cascade training avg loss: 0.018852
+[batch idx: 0] [ 35] Cascade training avg loss: 0.018751
+[batch idx: 0] [ 36] Cascade training avg loss: 0.018662
+[batch idx: 0] [ 37] Cascade training avg loss: 0.018558
+[batch idx: 0] [ 38] Cascade training avg loss: 0.018467
+[batch idx: 0] [ 39] Cascade training avg loss: 0.018391
+[batch idx: 0] [ 40] Cascade training avg loss: 0.018288
+[batch idx: 0] [ 41] Cascade training avg loss: 0.018201
+[batch idx: 0] [ 42] Cascade training avg loss: 0.018114
+[batch idx: 0] [ 43] Cascade training avg loss: 0.018028
+Early stop for ascending 3 times.
+Process layer module.layer1.1.conv1
+[batch idx: 0] [  0] Cascade training avg loss: 0.020833
+[batch idx: 0] [  1] Cascade training avg loss: 0.023622
+[batch idx: 0] [  2] Cascade training avg loss: 0.023309
+[batch idx: 0] [  3] Cascade training avg loss: 0.023250
+[batch idx: 0] [  4] Cascade training avg loss: 0.023398
+[batch idx: 0] [  5] Cascade training avg loss: 0.023269
+[batch idx: 0] [  6] Cascade training avg loss: 0.023095
+[batch idx: 0] [  7] Cascade training avg loss: 0.022845
+[batch idx: 0] [  8] Cascade training avg loss: 0.022613
+[batch idx: 0] [  9] Cascade training avg loss: 0.022416
+[batch idx: 0] [ 10] Cascade training avg loss: 0.022266
+[batch idx: 0] [ 11] Cascade training avg loss: 0.022176
+[batch idx: 0] [ 12] Cascade training avg loss: 0.021985
+[batch idx: 0] [ 13] Cascade training avg loss: 0.021809
+[batch idx: 0] [ 14] Cascade training avg loss: 0.021632
+[batch idx: 0] [ 15] Cascade training avg loss: 0.021563
+[batch idx: 0] [ 16] Cascade training avg loss: 0.021451
+[batch idx: 0] [ 17] Cascade training avg loss: 0.021295
+[batch idx: 0] [ 18] Cascade training avg loss: 0.021197
+[batch idx: 0] [ 19] Cascade training avg loss: 0.021042
+[batch idx: 0] [ 20] Cascade training avg loss: 0.020870
+[batch idx: 0] [ 21] Cascade training avg loss: 0.020740
+[batch idx: 0] [ 22] Cascade training avg loss: 0.020643
+[batch idx: 0] [ 23] Cascade training avg loss: 0.020552
+[batch idx: 0] [ 24] Cascade training avg loss: 0.020492
+Early stop for ascending 3 times.
+Process layer module.layer1.1.conv2
+[batch idx: 0] [  0] Cascade training avg loss: 0.034535
+[batch idx: 0] [  1] Cascade training avg loss: 0.034517
+[batch idx: 0] [  2] Cascade training avg loss: 0.033235
+[batch idx: 0] [  3] Cascade training avg loss: 0.033545
+[batch idx: 0] [  4] Cascade training avg loss: 0.033151
+[batch idx: 0] [  5] Cascade training avg loss: 0.032058
+[batch idx: 0] [  6] Cascade training avg loss: 0.031632
+[batch idx: 0] [  7] Cascade training avg loss: 0.030920
+[batch idx: 0] [  8] Cascade training avg loss: 0.030751
+[batch idx: 0] [  9] Cascade training avg loss: 0.030419
+[batch idx: 0] [ 10] Cascade training avg loss: 0.030202
+[batch idx: 0] [ 11] Cascade training avg loss: 0.029982
+[batch idx: 0] [ 12] Cascade training avg loss: 0.029740
+[batch idx: 0] [ 13] Cascade training avg loss: 0.029507
+[batch idx: 0] [ 14] Cascade training avg loss: 0.029287
+[batch idx: 0] [ 15] Cascade training avg loss: 0.028992
+[batch idx: 0] [ 16] Cascade training avg loss: 0.028741
+[batch idx: 0] [ 17] Cascade training avg loss: 0.028508
+[batch idx: 0] [ 18] Cascade training avg loss: 0.028247
+[batch idx: 0] [ 19] Cascade training avg loss: 0.028071
+[batch idx: 0] [ 20] Cascade training avg loss: 0.027853
+[batch idx: 0] [ 21] Cascade training avg loss: 0.027716
+[batch idx: 0] [ 22] Cascade training avg loss: 0.027505
+[batch idx: 0] [ 23] Cascade training avg loss: 0.027378
+[batch idx: 0] [ 24] Cascade training avg loss: 0.027239
+[batch idx: 0] [ 25] Cascade training avg loss: 0.027131
+[batch idx: 0] [ 26] Cascade training avg loss: 0.026940
+[batch idx: 0] [ 27] Cascade training avg loss: 0.026761
+[batch idx: 0] [ 28] Cascade training avg loss: 0.026626
+[batch idx: 0] [ 29] Cascade training avg loss: 0.026483
+[batch idx: 0] [ 30] Cascade training avg loss: 0.026370
+[batch idx: 0] [ 31] Cascade training avg loss: 0.026223
+[batch idx: 0] [ 32] Cascade training avg loss: 0.026086
+[batch idx: 0] [ 33] Cascade training avg loss: 0.025957
+[batch idx: 0] [ 34] Cascade training avg loss: 0.025864
+[batch idx: 0] [ 35] Cascade training avg loss: 0.025738
+[batch idx: 0] [ 36] Cascade training avg loss: 0.025637
+[batch idx: 0] [ 37] Cascade training avg loss: 0.025529
+[batch idx: 0] [ 38] Cascade training avg loss: 0.025441
+[batch idx: 0] [ 39] Cascade training avg loss: 0.025341
+[batch idx: 0] [ 40] Cascade training avg loss: 0.025233
+[batch idx: 0] [ 41] Cascade training avg loss: 0.025114
+[batch idx: 0] [ 42] Cascade training avg loss: 0.025014
+[batch idx: 0] [ 43] Cascade training avg loss: 0.024938
+[batch idx: 0] [ 44] Cascade training avg loss: 0.024840
+Early stop for ascending 3 times.
+Process layer module.layer1.2.conv1
+[batch idx: 0] [  0] Cascade training avg loss: 0.086925
+[batch idx: 0] [  1] Cascade training avg loss: 0.086277
+[batch idx: 0] [  2] Cascade training avg loss: 0.082972
+[batch idx: 0] [  3] Cascade training avg loss: 0.079764
+[batch idx: 0] [  4] Cascade training avg loss: 0.077372
+[batch idx: 0] [  5] Cascade training avg loss: 0.074165
+[batch idx: 0] [  6] Cascade training avg loss: 0.071633
+[batch idx: 0] [  7] Cascade training avg loss: 0.069359
+[batch idx: 0] [  8] Cascade training avg loss: 0.067499
+[batch idx: 0] [  9] Cascade training avg loss: 0.065836
+[batch idx: 0] [ 10] Cascade training avg loss: 0.064521
+[batch idx: 0] [ 11] Cascade training avg loss: 0.062928
+[batch idx: 0] [ 12] Cascade training avg loss: 0.061352
+[batch idx: 0] [ 13] Cascade training avg loss: 0.060018
+[batch idx: 0] [ 14] Cascade training avg loss: 0.059038
+[batch idx: 0] [ 15] Cascade training avg loss: 0.058012
+[batch idx: 0] [ 16] Cascade training avg loss: 0.057082
+[batch idx: 0] [ 17] Cascade training avg loss: 0.056417
+[batch idx: 0] [ 18] Cascade training avg loss: 0.055581
+[batch idx: 0] [ 19] Cascade training avg loss: 0.054750
+[batch idx: 0] [ 20] Cascade training avg loss: 0.054000
+[batch idx: 0] [ 21] Cascade training avg loss: 0.053237
+[batch idx: 0] [ 22] Cascade training avg loss: 0.052655
+[batch idx: 0] [ 23] Cascade training avg loss: 0.051930
+[batch idx: 0] [ 24] Cascade training avg loss: 0.051487
+[batch idx: 0] [ 25] Cascade training avg loss: 0.051010
+[batch idx: 0] [ 26] Cascade training avg loss: 0.050461
+[batch idx: 0] [ 27] Cascade training avg loss: 0.049998
+[batch idx: 0] [ 28] Cascade training avg loss: 0.049378
+[batch idx: 0] [ 29] Cascade training avg loss: 0.048985
+[batch idx: 0] [ 30] Cascade training avg loss: 0.048559
+[batch idx: 0] [ 31] Cascade training avg loss: 0.048136
+[batch idx: 0] [ 32] Cascade training avg loss: 0.047731
+[batch idx: 0] [ 33] Cascade training avg loss: 0.047388
+[batch idx: 0] [ 34] Cascade training avg loss: 0.047051
+[batch idx: 0] [ 35] Cascade training avg loss: 0.046725
+[batch idx: 0] [ 36] Cascade training avg loss: 0.046444
+[batch idx: 0] [ 37] Cascade training avg loss: 0.046199
+[batch idx: 0] [ 38] Cascade training avg loss: 0.045881
+[batch idx: 0] [ 39] Cascade training avg loss: 0.045615
+[batch idx: 0] [ 40] Cascade training avg loss: 0.045282
+[batch idx: 0] [ 41] Cascade training avg loss: 0.044997
+[batch idx: 0] [ 42] Cascade training avg loss: 0.044792
+[batch idx: 0] [ 43] Cascade training avg loss: 0.044552
+[batch idx: 0] [ 44] Cascade training avg loss: 0.044288
+[batch idx: 0] [ 45] Cascade training avg loss: 0.044040
+[batch idx: 0] [ 46] Cascade training avg loss: 0.043816
+[batch idx: 0] [ 47] Cascade training avg loss: 0.043604
+[batch idx: 0] [ 48] Cascade training avg loss: 0.043365
+[batch idx: 0] [ 49] Cascade training avg loss: 0.043179
+[batch idx: 0] [ 50] Cascade training avg loss: 0.042996
+[batch idx: 0] [ 51] Cascade training avg loss: 0.042844
+[batch idx: 0] [ 52] Cascade training avg loss: 0.042655
+[batch idx: 0] [ 53] Cascade training avg loss: 0.042482
+[batch idx: 0] [ 54] Cascade training avg loss: 0.042292
+[batch idx: 0] [ 55] Cascade training avg loss: 0.042087
+[batch idx: 0] [ 56] Cascade training avg loss: 0.041911
+[batch idx: 0] [ 57] Cascade training avg loss: 0.041726
+[batch idx: 0] [ 58] Cascade training avg loss: 0.041557
+[batch idx: 0] [ 59] Cascade training avg loss: 0.041390
+[batch idx: 0] [ 60] Cascade training avg loss: 0.041213
+[batch idx: 0] [ 61] Cascade training avg loss: 0.041031
+[batch idx: 0] [ 62] Cascade training avg loss: 0.040830
+[batch idx: 0] [ 63] Cascade training avg loss: 0.040691
+[batch idx: 0] [ 64] Cascade training avg loss: 0.040525
+[batch idx: 0] [ 65] Cascade training avg loss: 0.040375
+[batch idx: 0] [ 66] Cascade training avg loss: 0.040228
+[batch idx: 0] [ 67] Cascade training avg loss: 0.040073
+[batch idx: 0] [ 68] Cascade training avg loss: 0.039908
+[batch idx: 0] [ 69] Cascade training avg loss: 0.039789
+[batch idx: 0] [ 70] Cascade training avg loss: 0.039679
+[batch idx: 0] [ 71] Cascade training avg loss: 0.039572
+[batch idx: 0] [ 72] Cascade training avg loss: 0.039451
+[batch idx: 0] [ 73] Cascade training avg loss: 0.039323
+[batch idx: 0] [ 74] Cascade training avg loss: 0.039193
+[batch idx: 0] [ 75] Cascade training avg loss: 0.039081
+[batch idx: 0] [ 76] Cascade training avg loss: 0.038938
+[batch idx: 0] [ 77] Cascade training avg loss: 0.038818
+[batch idx: 0] [ 78] Cascade training avg loss: 0.038702
+[batch idx: 0] [ 79] Cascade training avg loss: 0.038594
+[batch idx: 0] [ 80] Cascade training avg loss: 0.038490
+[batch idx: 0] [ 81] Cascade training avg loss: 0.038400
+[batch idx: 0] [ 82] Cascade training avg loss: 0.038271
+[batch idx: 0] [ 83] Cascade training avg loss: 0.038149
+[batch idx: 0] [ 84] Cascade training avg loss: 0.038054
+[batch idx: 0] [ 85] Cascade training avg loss: 0.037947
+[batch idx: 0] [ 86] Cascade training avg loss: 0.037829
+[batch idx: 0] [ 87] Cascade training avg loss: 0.037735
+[batch idx: 0] [ 88] Cascade training avg loss: 0.037658
+[batch idx: 0] [ 89] Cascade training avg loss: 0.037548
+[batch idx: 0] [ 90] Cascade training avg loss: 0.037443
+[batch idx: 0] [ 91] Cascade training avg loss: 0.037340
+[batch idx: 0] [ 92] Cascade training avg loss: 0.037272
+[batch idx: 0] [ 93] Cascade training avg loss: 0.037180
+[batch idx: 0] [ 94] Cascade training avg loss: 0.037102
+Early stop for ascending 3 times.
+Process layer module.layer1.2.conv2
+[batch idx: 0] [  0] Cascade training avg loss: 0.044330
+[batch idx: 0] [  1] Cascade training avg loss: 0.045076
+[batch idx: 0] [  2] Cascade training avg loss: 0.044702
+[batch idx: 0] [  3] Cascade training avg loss: 0.044034
+[batch idx: 0] [  4] Cascade training avg loss: 0.043236
+[batch idx: 0] [  5] Cascade training avg loss: 0.043148
+[batch idx: 0] [  6] Cascade training avg loss: 0.042171
+[batch idx: 0] [  7] Cascade training avg loss: 0.041932
+[batch idx: 0] [  8] Cascade training avg loss: 0.041667
+[batch idx: 0] [  9] Cascade training avg loss: 0.041855
+[batch idx: 0] [ 10] Cascade training avg loss: 0.041584
+[batch idx: 0] [ 11] Cascade training avg loss: 0.041476
+[batch idx: 0] [ 12] Cascade training avg loss: 0.041200
+[batch idx: 0] [ 13] Cascade training avg loss: 0.040941
+[batch idx: 0] [ 14] Cascade training avg loss: 0.040717
+[batch idx: 0] [ 15] Cascade training avg loss: 0.040499
+[batch idx: 0] [ 16] Cascade training avg loss: 0.040359
+[batch idx: 0] [ 17] Cascade training avg loss: 0.040083
+[batch idx: 0] [ 18] Cascade training avg loss: 0.039886
+[batch idx: 0] [ 19] Cascade training avg loss: 0.039853
+[batch idx: 0] [ 20] Cascade training avg loss: 0.039551
+[batch idx: 0] [ 21] Cascade training avg loss: 0.039420
+[batch idx: 0] [ 22] Cascade training avg loss: 0.039298
+[batch idx: 0] [ 23] Cascade training avg loss: 0.039177
+[batch idx: 0] [ 24] Cascade training avg loss: 0.038916
+[batch idx: 0] [ 25] Cascade training avg loss: 0.038772
+[batch idx: 0] [ 26] Cascade training avg loss: 0.038694
+[batch idx: 0] [ 27] Cascade training avg loss: 0.038555
+[batch idx: 0] [ 28] Cascade training avg loss: 0.038377
+[batch idx: 0] [ 29] Cascade training avg loss: 0.038249
+[batch idx: 0] [ 30] Cascade training avg loss: 0.038225
+[batch idx: 0] [ 31] Cascade training avg loss: 0.038140
+[batch idx: 0] [ 32] Cascade training avg loss: 0.037990
+[batch idx: 0] [ 33] Cascade training avg loss: 0.037893
+[batch idx: 0] [ 34] Cascade training avg loss: 0.037811
+[batch idx: 0] [ 35] Cascade training avg loss: 0.037690
+[batch idx: 0] [ 36] Cascade training avg loss: 0.037600
+[batch idx: 0] [ 37] Cascade training avg loss: 0.037468
+[batch idx: 0] [ 38] Cascade training avg loss: 0.037349
+[batch idx: 0] [ 39] Cascade training avg loss: 0.037206
+[batch idx: 0] [ 40] Cascade training avg loss: 0.037184
+[batch idx: 0] [ 41] Cascade training avg loss: 0.037088
+[batch idx: 0] [ 42] Cascade training avg loss: 0.037011
+Early stop for ascending 3 times.
+Process layer module.layer2.0.conv1
+[batch idx: 0] [  0] Cascade training avg loss: 0.069991
+[batch idx: 0] [  1] Cascade training avg loss: 0.064531
+[batch idx: 0] [  2] Cascade training avg loss: 0.066324
+[batch idx: 0] [  3] Cascade training avg loss: 0.064331
+[batch idx: 0] [  4] Cascade training avg loss: 0.062102
+[batch idx: 0] [  5] Cascade training avg loss: 0.061162
+[batch idx: 0] [  6] Cascade training avg loss: 0.059796
+[batch idx: 0] [  7] Cascade training avg loss: 0.058910
+[batch idx: 0] [  8] Cascade training avg loss: 0.057854
+[batch idx: 0] [  9] Cascade training avg loss: 0.056916
+[batch idx: 0] [ 10] Cascade training avg loss: 0.056472
+[batch idx: 0] [ 11] Cascade training avg loss: 0.055722
+[batch idx: 0] [ 12] Cascade training avg loss: 0.055011
+[batch idx: 0] [ 13] Cascade training avg loss: 0.054458
+[batch idx: 0] [ 14] Cascade training avg loss: 0.054196
+[batch idx: 0] [ 15] Cascade training avg loss: 0.053990
+[batch idx: 0] [ 16] Cascade training avg loss: 0.053607
+[batch idx: 0] [ 17] Cascade training avg loss: 0.053208
+[batch idx: 0] [ 18] Cascade training avg loss: 0.053056
+[batch idx: 0] [ 19] Cascade training avg loss: 0.052766
+[batch idx: 0] [ 20] Cascade training avg loss: 0.052498
+[batch idx: 0] [ 21] Cascade training avg loss: 0.052220
+[batch idx: 0] [ 22] Cascade training avg loss: 0.051974
+[batch idx: 0] [ 23] Cascade training avg loss: 0.051748
+[batch idx: 0] [ 24] Cascade training avg loss: 0.051478
+[batch idx: 0] [ 25] Cascade training avg loss: 0.051231
+[batch idx: 0] [ 26] Cascade training avg loss: 0.051041
+[batch idx: 0] [ 27] Cascade training avg loss: 0.050818
+[batch idx: 0] [ 28] Cascade training avg loss: 0.050562
+[batch idx: 0] [ 29] Cascade training avg loss: 0.050394
+[batch idx: 0] [ 30] Cascade training avg loss: 0.050169
+[batch idx: 0] [ 31] Cascade training avg loss: 0.050062
+[batch idx: 0] [ 32] Cascade training avg loss: 0.049992
+[batch idx: 0] [ 33] Cascade training avg loss: 0.049800
+[batch idx: 0] [ 34] Cascade training avg loss: 0.049708
+[batch idx: 0] [ 35] Cascade training avg loss: 0.049515
+[batch idx: 0] [ 36] Cascade training avg loss: 0.049370
+[batch idx: 0] [ 37] Cascade training avg loss: 0.049223
+[batch idx: 0] [ 38] Cascade training avg loss: 0.049099
+[batch idx: 0] [ 39] Cascade training avg loss: 0.049016
+[batch idx: 0] [ 40] Cascade training avg loss: 0.048876
+[batch idx: 0] [ 41] Cascade training avg loss: 0.048733
+[batch idx: 0] [ 42] Cascade training avg loss: 0.048590
+[batch idx: 0] [ 43] Cascade training avg loss: 0.048497
+[batch idx: 0] [ 44] Cascade training avg loss: 0.048392
+[batch idx: 0] [ 45] Cascade training avg loss: 0.048387
+[batch idx: 0] [ 46] Cascade training avg loss: 0.048343
+[batch idx: 0] [ 47] Cascade training avg loss: 0.048256
+Early stop for ascending 3 times.
+Process layer module.layer2.0.conv2
+[batch idx: 0] [  0] Cascade training avg loss: 0.073170
+[batch idx: 0] [  1] Cascade training avg loss: 0.073864
+[batch idx: 0] [  2] Cascade training avg loss: 0.072040
+[batch idx: 0] [  3] Cascade training avg loss: 0.072581
+[batch idx: 0] [  4] Cascade training avg loss: 0.070654
+[batch idx: 0] [  5] Cascade training avg loss: 0.069616
+[batch idx: 0] [  6] Cascade training avg loss: 0.069349
+[batch idx: 0] [  7] Cascade training avg loss: 0.068577
+[batch idx: 0] [  8] Cascade training avg loss: 0.067724
+[batch idx: 0] [  9] Cascade training avg loss: 0.066801
+[batch idx: 0] [ 10] Cascade training avg loss: 0.066134
+[batch idx: 0] [ 11] Cascade training avg loss: 0.065370
+[batch idx: 0] [ 12] Cascade training avg loss: 0.064856
+[batch idx: 0] [ 13] Cascade training avg loss: 0.064624
+[batch idx: 0] [ 14] Cascade training avg loss: 0.064181
+[batch idx: 0] [ 15] Cascade training avg loss: 0.063994
+[batch idx: 0] [ 16] Cascade training avg loss: 0.063718
+[batch idx: 0] [ 17] Cascade training avg loss: 0.063196
+[batch idx: 0] [ 18] Cascade training avg loss: 0.062753
+[batch idx: 0] [ 19] Cascade training avg loss: 0.062790
+[batch idx: 0] [ 20] Cascade training avg loss: 0.062455
+[batch idx: 0] [ 21] Cascade training avg loss: 0.062255
+[batch idx: 0] [ 22] Cascade training avg loss: 0.061914
+[batch idx: 0] [ 23] Cascade training avg loss: 0.061614
+[batch idx: 0] [ 24] Cascade training avg loss: 0.061327
+[batch idx: 0] [ 25] Cascade training avg loss: 0.061057
+[batch idx: 0] [ 26] Cascade training avg loss: 0.060830
+[batch idx: 0] [ 27] Cascade training avg loss: 0.060731
+[batch idx: 0] [ 28] Cascade training avg loss: 0.060543
+[batch idx: 0] [ 29] Cascade training avg loss: 0.060224
+[batch idx: 0] [ 30] Cascade training avg loss: 0.060022
+[batch idx: 0] [ 31] Cascade training avg loss: 0.059801
+[batch idx: 0] [ 32] Cascade training avg loss: 0.059493
+[batch idx: 0] [ 33] Cascade training avg loss: 0.059371
+[batch idx: 0] [ 34] Cascade training avg loss: 0.059158
+[batch idx: 0] [ 35] Cascade training avg loss: 0.059027
+[batch idx: 0] [ 36] Cascade training avg loss: 0.058802
+[batch idx: 0] [ 37] Cascade training avg loss: 0.058578
+[batch idx: 0] [ 38] Cascade training avg loss: 0.058439
+[batch idx: 0] [ 39] Cascade training avg loss: 0.058247
+[batch idx: 0] [ 40] Cascade training avg loss: 0.058187
+[batch idx: 0] [ 41] Cascade training avg loss: 0.058069
+[batch idx: 0] [ 42] Cascade training avg loss: 0.057881
+[batch idx: 0] [ 43] Cascade training avg loss: 0.057745
+[batch idx: 0] [ 44] Cascade training avg loss: 0.057574
+[batch idx: 0] [ 45] Cascade training avg loss: 0.057512
+[batch idx: 0] [ 46] Cascade training avg loss: 0.057555
+[batch idx: 0] [ 47] Cascade training avg loss: 0.057427
+[batch idx: 0] [ 48] Cascade training avg loss: 0.057287
+[batch idx: 0] [ 49] Cascade training avg loss: 0.057187
+[batch idx: 0] [ 50] Cascade training avg loss: 0.057063
+[batch idx: 0] [ 51] Cascade training avg loss: 0.056914
+[batch idx: 0] [ 52] Cascade training avg loss: 0.056760
+[batch idx: 0] [ 53] Cascade training avg loss: 0.056651
+[batch idx: 0] [ 54] Cascade training avg loss: 0.056506
+[batch idx: 0] [ 55] Cascade training avg loss: 0.056409
+[batch idx: 0] [ 56] Cascade training avg loss: 0.056284
+[batch idx: 0] [ 57] Cascade training avg loss: 0.056150
+[batch idx: 0] [ 58] Cascade training avg loss: 0.056108
+[batch idx: 0] [ 59] Cascade training avg loss: 0.055998
+[batch idx: 0] [ 60] Cascade training avg loss: 0.055889
+[batch idx: 0] [ 61] Cascade training avg loss: 0.055812
+[batch idx: 0] [ 62] Cascade training avg loss: 0.055726
+[batch idx: 0] [ 63] Cascade training avg loss: 0.055644
+Early stop for ascending 3 times.
+Process layer module.layer2.0.downsample.0
+[batch idx: 0] [  0] Cascade training avg loss: 0.088749
+[batch idx: 0] [  1] Cascade training avg loss: 0.085293
+[batch idx: 0] [  2] Cascade training avg loss: 0.083230
+[batch idx: 0] [  3] Cascade training avg loss: 0.080922
+[batch idx: 0] [  4] Cascade training avg loss: 0.080482
+[batch idx: 0] [  5] Cascade training avg loss: 0.077994
+[batch idx: 0] [  6] Cascade training avg loss: 0.077745
+[batch idx: 0] [  7] Cascade training avg loss: 0.075888
+[batch idx: 0] [  8] Cascade training avg loss: 0.075467
+[batch idx: 0] [  9] Cascade training avg loss: 0.074477
+[batch idx: 0] [ 10] Cascade training avg loss: 0.073481
+[batch idx: 0] [ 11] Cascade training avg loss: 0.073207
+[batch idx: 0] [ 12] Cascade training avg loss: 0.072154
+[batch idx: 0] [ 13] Cascade training avg loss: 0.071715
+[batch idx: 0] [ 14] Cascade training avg loss: 0.071033
+[batch idx: 0] [ 15] Cascade training avg loss: 0.070313
+[batch idx: 0] [ 16] Cascade training avg loss: 0.069679
+[batch idx: 0] [ 17] Cascade training avg loss: 0.069274
+[batch idx: 0] [ 18] Cascade training avg loss: 0.068945
+[batch idx: 0] [ 19] Cascade training avg loss: 0.068531
+[batch idx: 0] [ 20] Cascade training avg loss: 0.068057
+[batch idx: 0] [ 21] Cascade training avg loss: 0.067669
+[batch idx: 0] [ 22] Cascade training avg loss: 0.067332
+[batch idx: 0] [ 23] Cascade training avg loss: 0.067114
+[batch idx: 0] [ 24] Cascade training avg loss: 0.066844
+[batch idx: 0] [ 25] Cascade training avg loss: 0.066434
+[batch idx: 0] [ 26] Cascade training avg loss: 0.066219
+[batch idx: 0] [ 27] Cascade training avg loss: 0.066006
+[batch idx: 0] [ 28] Cascade training avg loss: 0.065749
+[batch idx: 0] [ 29] Cascade training avg loss: 0.065566
+[batch idx: 0] [ 30] Cascade training avg loss: 0.065248
+[batch idx: 0] [ 31] Cascade training avg loss: 0.065111
+[batch idx: 0] [ 32] Cascade training avg loss: 0.064914
+[batch idx: 0] [ 33] Cascade training avg loss: 0.064705
+[batch idx: 0] [ 34] Cascade training avg loss: 0.064485
+[batch idx: 0] [ 35] Cascade training avg loss: 0.064246
+[batch idx: 0] [ 36] Cascade training avg loss: 0.064217
+[batch idx: 0] [ 37] Cascade training avg loss: 0.064034
+[batch idx: 0] [ 38] Cascade training avg loss: 0.063767
+[batch idx: 0] [ 39] Cascade training avg loss: 0.063643
+[batch idx: 0] [ 40] Cascade training avg loss: 0.063500
+[batch idx: 0] [ 41] Cascade training avg loss: 0.063228
+[batch idx: 0] [ 42] Cascade training avg loss: 0.063057
+[batch idx: 0] [ 43] Cascade training avg loss: 0.062918
+[batch idx: 0] [ 44] Cascade training avg loss: 0.062818
+[batch idx: 0] [ 45] Cascade training avg loss: 0.062697
+[batch idx: 0] [ 46] Cascade training avg loss: 0.062621
+[batch idx: 0] [ 47] Cascade training avg loss: 0.062537
+[batch idx: 0] [ 48] Cascade training avg loss: 0.062455
+Early stop for ascending 3 times.
+Process layer module.layer2.1.conv1
+[batch idx: 0] [  0] Cascade training avg loss: 0.085408
+[batch idx: 0] [  1] Cascade training avg loss: 0.081442
+[batch idx: 0] [  2] Cascade training avg loss: 0.079315
+[batch idx: 0] [  3] Cascade training avg loss: 0.078789
+[batch idx: 0] [  4] Cascade training avg loss: 0.078188
+[batch idx: 0] [  5] Cascade training avg loss: 0.077186
+[batch idx: 0] [  6] Cascade training avg loss: 0.076791
+[batch idx: 0] [  7] Cascade training avg loss: 0.076187
+[batch idx: 0] [  8] Cascade training avg loss: 0.075583
+[batch idx: 0] [  9] Cascade training avg loss: 0.075111
+[batch idx: 0] [ 10] Cascade training avg loss: 0.074610
+[batch idx: 0] [ 11] Cascade training avg loss: 0.074253
+[batch idx: 0] [ 12] Cascade training avg loss: 0.073438
+[batch idx: 0] [ 13] Cascade training avg loss: 0.073099
+[batch idx: 0] [ 14] Cascade training avg loss: 0.073183
+[batch idx: 0] [ 15] Cascade training avg loss: 0.072686
+[batch idx: 0] [ 16] Cascade training avg loss: 0.072231
+[batch idx: 0] [ 17] Cascade training avg loss: 0.071864
+[batch idx: 0] [ 18] Cascade training avg loss: 0.071545
+[batch idx: 0] [ 19] Cascade training avg loss: 0.071250
+[batch idx: 0] [ 20] Cascade training avg loss: 0.071101
+[batch idx: 0] [ 21] Cascade training avg loss: 0.070786
+[batch idx: 0] [ 22] Cascade training avg loss: 0.070750
+[batch idx: 0] [ 23] Cascade training avg loss: 0.070578
+[batch idx: 0] [ 24] Cascade training avg loss: 0.070371
+[batch idx: 0] [ 25] Cascade training avg loss: 0.070207
+[batch idx: 0] [ 26] Cascade training avg loss: 0.070070
+[batch idx: 0] [ 27] Cascade training avg loss: 0.069975
+[batch idx: 0] [ 28] Cascade training avg loss: 0.069858
+[batch idx: 0] [ 29] Cascade training avg loss: 0.069768
+[batch idx: 0] [ 30] Cascade training avg loss: 0.069482
+[batch idx: 0] [ 31] Cascade training avg loss: 0.069447
+[batch idx: 0] [ 32] Cascade training avg loss: 0.069350
+[batch idx: 0] [ 33] Cascade training avg loss: 0.069257
+Early stop for ascending 3 times.
+Process layer module.layer2.1.conv2
+[batch idx: 0] [  0] Cascade training avg loss: 0.067800
+[batch idx: 0] [  1] Cascade training avg loss: 0.077545
+[batch idx: 0] [  2] Cascade training avg loss: 0.077360
+[batch idx: 0] [  3] Cascade training avg loss: 0.078702
+[batch idx: 0] [  4] Cascade training avg loss: 0.079076
+[batch idx: 0] [  5] Cascade training avg loss: 0.079603
+Early stop for ascending 3 times.
+Process layer module.layer2.2.conv1
+[batch idx: 0] [  0] Cascade training avg loss: 0.111144
+[batch idx: 0] [  1] Cascade training avg loss: 0.105970
+[batch idx: 0] [  2] Cascade training avg loss: 0.103768
+[batch idx: 0] [  3] Cascade training avg loss: 0.104557
+[batch idx: 0] [  4] Cascade training avg loss: 0.104707
+[batch idx: 0] [  5] Cascade training avg loss: 0.104544
+[batch idx: 0] [  6] Cascade training avg loss: 0.104064
+[batch idx: 0] [  7] Cascade training avg loss: 0.103439
+[batch idx: 0] [  8] Cascade training avg loss: 0.102642
+[batch idx: 0] [  9] Cascade training avg loss: 0.102260
+[batch idx: 0] [ 10] Cascade training avg loss: 0.101555
+[batch idx: 0] [ 11] Cascade training avg loss: 0.100085
+[batch idx: 0] [ 12] Cascade training avg loss: 0.099547
+[batch idx: 0] [ 13] Cascade training avg loss: 0.098920
+[batch idx: 0] [ 14] Cascade training avg loss: 0.098365
+[batch idx: 0] [ 15] Cascade training avg loss: 0.097750
+[batch idx: 0] [ 16] Cascade training avg loss: 0.096982
+[batch idx: 0] [ 17] Cascade training avg loss: 0.096694
+[batch idx: 0] [ 18] Cascade training avg loss: 0.096465
+[batch idx: 0] [ 19] Cascade training avg loss: 0.095998
+[batch idx: 0] [ 20] Cascade training avg loss: 0.095562
+[batch idx: 0] [ 21] Cascade training avg loss: 0.095199
+[batch idx: 0] [ 22] Cascade training avg loss: 0.095080
+[batch idx: 0] [ 23] Cascade training avg loss: 0.094448
+[batch idx: 0] [ 24] Cascade training avg loss: 0.094310
+[batch idx: 0] [ 25] Cascade training avg loss: 0.094053
+[batch idx: 0] [ 26] Cascade training avg loss: 0.093653
+[batch idx: 0] [ 27] Cascade training avg loss: 0.093273
+[batch idx: 0] [ 28] Cascade training avg loss: 0.093106
+[batch idx: 0] [ 29] Cascade training avg loss: 0.092776
+[batch idx: 0] [ 30] Cascade training avg loss: 0.092467
+[batch idx: 0] [ 31] Cascade training avg loss: 0.092025
+[batch idx: 0] [ 32] Cascade training avg loss: 0.091846
+[batch idx: 0] [ 33] Cascade training avg loss: 0.091581
+[batch idx: 0] [ 34] Cascade training avg loss: 0.091081
+[batch idx: 0] [ 35] Cascade training avg loss: 0.090957
+[batch idx: 0] [ 36] Cascade training avg loss: 0.090581
+[batch idx: 0] [ 37] Cascade training avg loss: 0.090238
+[batch idx: 0] [ 38] Cascade training avg loss: 0.090044
+[batch idx: 0] [ 39] Cascade training avg loss: 0.089861
+[batch idx: 0] [ 40] Cascade training avg loss: 0.089683
+[batch idx: 0] [ 41] Cascade training avg loss: 0.089542
+[batch idx: 0] [ 42] Cascade training avg loss: 0.089279
+[batch idx: 0] [ 43] Cascade training avg loss: 0.089025
+[batch idx: 0] [ 44] Cascade training avg loss: 0.088878
+[batch idx: 0] [ 45] Cascade training avg loss: 0.088617
+[batch idx: 0] [ 46] Cascade training avg loss: 0.088456
+[batch idx: 0] [ 47] Cascade training avg loss: 0.088434
+[batch idx: 0] [ 48] Cascade training avg loss: 0.088303
+[batch idx: 0] [ 49] Cascade training avg loss: 0.088117
+[batch idx: 0] [ 50] Cascade training avg loss: 0.087980
+[batch idx: 0] [ 51] Cascade training avg loss: 0.087831
+[batch idx: 0] [ 52] Cascade training avg loss: 0.087671
+[batch idx: 0] [ 53] Cascade training avg loss: 0.087590
+[batch idx: 0] [ 54] Cascade training avg loss: 0.087348
+[batch idx: 0] [ 55] Cascade training avg loss: 0.087301
+[batch idx: 0] [ 56] Cascade training avg loss: 0.087108
+[batch idx: 0] [ 57] Cascade training avg loss: 0.086953
+[batch idx: 0] [ 58] Cascade training avg loss: 0.086803
+[batch idx: 0] [ 59] Cascade training avg loss: 0.086674
+[batch idx: 0] [ 60] Cascade training avg loss: 0.086657
+[batch idx: 0] [ 61] Cascade training avg loss: 0.086408
+[batch idx: 0] [ 62] Cascade training avg loss: 0.086261
+[batch idx: 0] [ 63] Cascade training avg loss: 0.086113
+[batch idx: 0] [ 64] Cascade training avg loss: 0.085958
+[batch idx: 0] [ 65] Cascade training avg loss: 0.085802
+[batch idx: 0] [ 66] Cascade training avg loss: 0.085680
+[batch idx: 0] [ 67] Cascade training avg loss: 0.085487
+[batch idx: 0] [ 68] Cascade training avg loss: 0.085365
+[batch idx: 0] [ 69] Cascade training avg loss: 0.085252
+[batch idx: 0] [ 70] Cascade training avg loss: 0.085089
+[batch idx: 0] [ 71] Cascade training avg loss: 0.084987
+[batch idx: 0] [ 72] Cascade training avg loss: 0.084864
+[batch idx: 0] [ 73] Cascade training avg loss: 0.084786
+[batch idx: 0] [ 74] Cascade training avg loss: 0.084615
+[batch idx: 0] [ 75] Cascade training avg loss: 0.084541
+[batch idx: 0] [ 76] Cascade training avg loss: 0.084471
+[batch idx: 0] [ 77] Cascade training avg loss: 0.084427
+Early stop for ascending 3 times.
+Process layer module.layer2.2.conv2
+[batch idx: 0] [  0] Cascade training avg loss: 0.093902
+[batch idx: 0] [  1] Cascade training avg loss: 0.089661
+[batch idx: 0] [  2] Cascade training avg loss: 0.090139
+[batch idx: 0] [  3] Cascade training avg loss: 0.088216
+[batch idx: 0] [  4] Cascade training avg loss: 0.086777
+[batch idx: 0] [  5] Cascade training avg loss: 0.086466
+[batch idx: 0] [  6] Cascade training avg loss: 0.087197
+[batch idx: 0] [  7] Cascade training avg loss: 0.086603
+[batch idx: 0] [  8] Cascade training avg loss: 0.086861
+[batch idx: 0] [  9] Cascade training avg loss: 0.086588
+[batch idx: 0] [ 10] Cascade training avg loss: 0.086246
+[batch idx: 0] [ 11] Cascade training avg loss: 0.086196
+[batch idx: 0] [ 12] Cascade training avg loss: 0.086180
+[batch idx: 0] [ 13] Cascade training avg loss: 0.085857
+[batch idx: 0] [ 14] Cascade training avg loss: 0.085634
+[batch idx: 0] [ 15] Cascade training avg loss: 0.085518
+[batch idx: 0] [ 16] Cascade training avg loss: 0.085172
+[batch idx: 0] [ 17] Cascade training avg loss: 0.085035
+[batch idx: 0] [ 18] Cascade training avg loss: 0.084803
+[batch idx: 0] [ 19] Cascade training avg loss: 0.084746
+[batch idx: 0] [ 20] Cascade training avg loss: 0.084536
+[batch idx: 0] [ 21] Cascade training avg loss: 0.084547
+[batch idx: 0] [ 22] Cascade training avg loss: 0.084485
+[batch idx: 0] [ 23] Cascade training avg loss: 0.084312
+[batch idx: 0] [ 24] Cascade training avg loss: 0.084140
+[batch idx: 0] [ 25] Cascade training avg loss: 0.083921
+[batch idx: 0] [ 26] Cascade training avg loss: 0.083735
+[batch idx: 0] [ 27] Cascade training avg loss: 0.083571
+[batch idx: 0] [ 28] Cascade training avg loss: 0.083387
+[batch idx: 0] [ 29] Cascade training avg loss: 0.083186
+[batch idx: 0] [ 30] Cascade training avg loss: 0.083233
+[batch idx: 0] [ 31] Cascade training avg loss: 0.083157
+[batch idx: 0] [ 32] Cascade training avg loss: 0.083053
+[batch idx: 0] [ 33] Cascade training avg loss: 0.082884
+[batch idx: 0] [ 34] Cascade training avg loss: 0.082704
+[batch idx: 0] [ 35] Cascade training avg loss: 0.082489
+[batch idx: 0] [ 36] Cascade training avg loss: 0.082389
+[batch idx: 0] [ 37] Cascade training avg loss: 0.082266
+[batch idx: 0] [ 38] Cascade training avg loss: 0.082380
+[batch idx: 0] [ 39] Cascade training avg loss: 0.082236
+[batch idx: 0] [ 40] Cascade training avg loss: 0.082160
+[batch idx: 0] [ 41] Cascade training avg loss: 0.082035
+[batch idx: 0] [ 42] Cascade training avg loss: 0.081994
+[batch idx: 0] [ 43] Cascade training avg loss: 0.081851
+[batch idx: 0] [ 44] Cascade training avg loss: 0.081789
+[batch idx: 0] [ 45] Cascade training avg loss: 0.081685
+[batch idx: 0] [ 46] Cascade training avg loss: 0.081635
+[batch idx: 0] [ 47] Cascade training avg loss: 0.081559
+[batch idx: 0] [ 48] Cascade training avg loss: 0.081298
+[batch idx: 0] [ 49] Cascade training avg loss: 0.081217
+[batch idx: 0] [ 50] Cascade training avg loss: 0.081183
+[batch idx: 0] [ 51] Cascade training avg loss: 0.081058
+[batch idx: 0] [ 52] Cascade training avg loss: 0.081095
+[batch idx: 0] [ 53] Cascade training avg loss: 0.081087
+[batch idx: 0] [ 54] Cascade training avg loss: 0.081026
+Early stop for ascending 3 times.
+Process layer module.layer3.0.conv1
+[batch idx: 0] [  0] Cascade training avg loss: 0.106377
+[batch idx: 0] [  1] Cascade training avg loss: 0.113421
+[batch idx: 0] [  2] Cascade training avg loss: 0.114896
+Early stop for ascending 3 times.
+Process layer module.layer3.0.conv2
+[batch idx: 0] [  0] Cascade training avg loss: 0.190367
+[batch idx: 0] [  1] Cascade training avg loss: 0.187337
+[batch idx: 0] [  2] Cascade training avg loss: 0.185735
+[batch idx: 0] [  3] Cascade training avg loss: 0.183290
+[batch idx: 0] [  4] Cascade training avg loss: 0.182509
+[batch idx: 0] [  5] Cascade training avg loss: 0.180053
+[batch idx: 0] [  6] Cascade training avg loss: 0.177467
+[batch idx: 0] [  7] Cascade training avg loss: 0.175897
+[batch idx: 0] [  8] Cascade training avg loss: 0.174955
+[batch idx: 0] [  9] Cascade training avg loss: 0.174897
+[batch idx: 0] [ 10] Cascade training avg loss: 0.172886
+[batch idx: 0] [ 11] Cascade training avg loss: 0.172337
+[batch idx: 0] [ 12] Cascade training avg loss: 0.171360
+[batch idx: 0] [ 13] Cascade training avg loss: 0.170180
+[batch idx: 0] [ 14] Cascade training avg loss: 0.169307
+[batch idx: 0] [ 15] Cascade training avg loss: 0.169242
+[batch idx: 0] [ 16] Cascade training avg loss: 0.167514
+[batch idx: 0] [ 17] Cascade training avg loss: 0.166734
+[batch idx: 0] [ 18] Cascade training avg loss: 0.165602
+[batch idx: 0] [ 19] Cascade training avg loss: 0.164280
+[batch idx: 0] [ 20] Cascade training avg loss: 0.163566
+[batch idx: 0] [ 21] Cascade training avg loss: 0.162625
+[batch idx: 0] [ 22] Cascade training avg loss: 0.161856
+[batch idx: 0] [ 23] Cascade training avg loss: 0.160885
+[batch idx: 0] [ 24] Cascade training avg loss: 0.159943
+[batch idx: 0] [ 25] Cascade training avg loss: 0.159217
+[batch idx: 0] [ 26] Cascade training avg loss: 0.158289
+[batch idx: 0] [ 27] Cascade training avg loss: 0.157920
+[batch idx: 0] [ 28] Cascade training avg loss: 0.157291
+[batch idx: 0] [ 29] Cascade training avg loss: 0.156538
+[batch idx: 0] [ 30] Cascade training avg loss: 0.156094
+[batch idx: 0] [ 31] Cascade training avg loss: 0.155671
+[batch idx: 0] [ 32] Cascade training avg loss: 0.155113
+[batch idx: 0] [ 33] Cascade training avg loss: 0.154593
+[batch idx: 0] [ 34] Cascade training avg loss: 0.154299
+[batch idx: 0] [ 35] Cascade training avg loss: 0.153860
+[batch idx: 0] [ 36] Cascade training avg loss: 0.153600
+[batch idx: 0] [ 37] Cascade training avg loss: 0.153289
+[batch idx: 0] [ 38] Cascade training avg loss: 0.152892
+[batch idx: 0] [ 39] Cascade training avg loss: 0.152165
+[batch idx: 0] [ 40] Cascade training avg loss: 0.151837
+[batch idx: 0] [ 41] Cascade training avg loss: 0.151433
+[batch idx: 0] [ 42] Cascade training avg loss: 0.151057
+[batch idx: 0] [ 43] Cascade training avg loss: 0.150628
+[batch idx: 0] [ 44] Cascade training avg loss: 0.150340
+[batch idx: 0] [ 45] Cascade training avg loss: 0.149878
+[batch idx: 0] [ 46] Cascade training avg loss: 0.149576
+[batch idx: 0] [ 47] Cascade training avg loss: 0.149241
+[batch idx: 0] [ 48] Cascade training avg loss: 0.149090
+[batch idx: 0] [ 49] Cascade training avg loss: 0.148707
+[batch idx: 0] [ 50] Cascade training avg loss: 0.148594
+[batch idx: 0] [ 51] Cascade training avg loss: 0.148477
+[batch idx: 0] [ 52] Cascade training avg loss: 0.148222
+[batch idx: 0] [ 53] Cascade training avg loss: 0.147961
+[batch idx: 0] [ 54] Cascade training avg loss: 0.147612
+[batch idx: 0] [ 55] Cascade training avg loss: 0.147240
+[batch idx: 0] [ 56] Cascade training avg loss: 0.147007
+[batch idx: 0] [ 57] Cascade training avg loss: 0.146655
+[batch idx: 0] [ 58] Cascade training avg loss: 0.146387
+[batch idx: 0] [ 59] Cascade training avg loss: 0.146133
+[batch idx: 0] [ 60] Cascade training avg loss: 0.145837
+[batch idx: 0] [ 61] Cascade training avg loss: 0.145501
+[batch idx: 0] [ 62] Cascade training avg loss: 0.145254
+[batch idx: 0] [ 63] Cascade training avg loss: 0.145013
+[batch idx: 0] [ 64] Cascade training avg loss: 0.144753
+[batch idx: 0] [ 65] Cascade training avg loss: 0.144414
+[batch idx: 0] [ 66] Cascade training avg loss: 0.144085
+[batch idx: 0] [ 67] Cascade training avg loss: 0.143803
+[batch idx: 0] [ 68] Cascade training avg loss: 0.143552
+[batch idx: 0] [ 69] Cascade training avg loss: 0.143357
+[batch idx: 0] [ 70] Cascade training avg loss: 0.143266
+[batch idx: 0] [ 71] Cascade training avg loss: 0.143109
+[batch idx: 0] [ 72] Cascade training avg loss: 0.142878
+[batch idx: 0] [ 73] Cascade training avg loss: 0.142749
+[batch idx: 0] [ 74] Cascade training avg loss: 0.142524
+[batch idx: 0] [ 75] Cascade training avg loss: 0.142305
+[batch idx: 0] [ 76] Cascade training avg loss: 0.142006
+[batch idx: 0] [ 77] Cascade training avg loss: 0.141865
+[batch idx: 0] [ 78] Cascade training avg loss: 0.141630
+[batch idx: 0] [ 79] Cascade training avg loss: 0.141495
+[batch idx: 0] [ 80] Cascade training avg loss: 0.141215
+[batch idx: 0] [ 81] Cascade training avg loss: 0.141076
+[batch idx: 0] [ 82] Cascade training avg loss: 0.140839
+[batch idx: 0] [ 83] Cascade training avg loss: 0.140514
+[batch idx: 0] [ 84] Cascade training avg loss: 0.140378
+[batch idx: 0] [ 85] Cascade training avg loss: 0.140221
+[batch idx: 0] [ 86] Cascade training avg loss: 0.140065
+[batch idx: 0] [ 87] Cascade training avg loss: 0.139939
+[batch idx: 0] [ 88] Cascade training avg loss: 0.139707
+[batch idx: 0] [ 89] Cascade training avg loss: 0.139473
+[batch idx: 0] [ 90] Cascade training avg loss: 0.139327
+[batch idx: 0] [ 91] Cascade training avg loss: 0.139237
+[batch idx: 0] [ 92] Cascade training avg loss: 0.139088
+[batch idx: 0] [ 93] Cascade training avg loss: 0.138904
+[batch idx: 0] [ 94] Cascade training avg loss: 0.138783
+[batch idx: 0] [ 95] Cascade training avg loss: 0.138613
+[batch idx: 0] [ 96] Cascade training avg loss: 0.138446
+[batch idx: 0] [ 97] Cascade training avg loss: 0.138262
+[batch idx: 0] [ 98] Cascade training avg loss: 0.138133
+[batch idx: 0] [ 99] Cascade training avg loss: 0.138018
+[batch idx: 0] [100] Cascade training avg loss: 0.137798
+[batch idx: 0] [101] Cascade training avg loss: 0.137679
+[batch idx: 0] [102] Cascade training avg loss: 0.137461
+[batch idx: 0] [103] Cascade training avg loss: 0.137376
+[batch idx: 0] [104] Cascade training avg loss: 0.137189
+[batch idx: 0] [105] Cascade training avg loss: 0.136992
+[batch idx: 0] [106] Cascade training avg loss: 0.136791
+[batch idx: 0] [107] Cascade training avg loss: 0.136603
+[batch idx: 0] [108] Cascade training avg loss: 0.136467
+[batch idx: 0] [109] Cascade training avg loss: 0.136330
+[batch idx: 0] [110] Cascade training avg loss: 0.136254
+[batch idx: 0] [111] Cascade training avg loss: 0.136115
+[batch idx: 0] [112] Cascade training avg loss: 0.135948
+[batch idx: 0] [113] Cascade training avg loss: 0.135787
+[batch idx: 0] [114] Cascade training avg loss: 0.135688
+[batch idx: 0] [115] Cascade training avg loss: 0.135550
+[batch idx: 0] [116] Cascade training avg loss: 0.135426
+[batch idx: 0] [117] Cascade training avg loss: 0.135303
+[batch idx: 0] [118] Cascade training avg loss: 0.135148
+[batch idx: 0] [119] Cascade training avg loss: 0.135018
+[batch idx: 0] [120] Cascade training avg loss: 0.134941
+[batch idx: 0] [121] Cascade training avg loss: 0.134766
+[batch idx: 0] [122] Cascade training avg loss: 0.134606
+[batch idx: 0] [123] Cascade training avg loss: 0.134514
+[batch idx: 0] [124] Cascade training avg loss: 0.134414
+[batch idx: 0] [125] Cascade training avg loss: 0.134288
+[batch idx: 0] [126] Cascade training avg loss: 0.134109
+[batch idx: 0] [127] Cascade training avg loss: 0.133982
+[batch idx: 0] [128] Cascade training avg loss: 0.133776
+[batch idx: 0] [129] Cascade training avg loss: 0.133655
+[batch idx: 0] [130] Cascade training avg loss: 0.133517
+[batch idx: 0] [131] Cascade training avg loss: 0.133372
+[batch idx: 0] [132] Cascade training avg loss: 0.133315
+[batch idx: 0] [133] Cascade training avg loss: 0.133215
+[batch idx: 0] [134] Cascade training avg loss: 0.133114
+[batch idx: 0] [135] Cascade training avg loss: 0.133003
+[batch idx: 0] [136] Cascade training avg loss: 0.132876
+[batch idx: 0] [137] Cascade training avg loss: 0.132794
+[batch idx: 0] [138] Cascade training avg loss: 0.132661
+[batch idx: 0] [139] Cascade training avg loss: 0.132520
+[batch idx: 0] [140] Cascade training avg loss: 0.132415
+[batch idx: 0] [141] Cascade training avg loss: 0.132316
+[batch idx: 0] [142] Cascade training avg loss: 0.132214
+[batch idx: 0] [143] Cascade training avg loss: 0.132113
+[batch idx: 0] [144] Cascade training avg loss: 0.131983
+[batch idx: 0] [145] Cascade training avg loss: 0.131902
+[batch idx: 0] [146] Cascade training avg loss: 0.131799
+[batch idx: 0] [147] Cascade training avg loss: 0.131661
+[batch idx: 0] [148] Cascade training avg loss: 0.131612
+[batch idx: 0] [149] Cascade training avg loss: 0.131547
+[batch idx: 0] [150] Cascade training avg loss: 0.131424
+[batch idx: 0] [151] Cascade training avg loss: 0.131353
+[batch idx: 0] [152] Cascade training avg loss: 0.131220
+[batch idx: 0] [153] Cascade training avg loss: 0.131093
+[batch idx: 0] [154] Cascade training avg loss: 0.131018
+[batch idx: 0] [155] Cascade training avg loss: 0.130910
+[batch idx: 0] [156] Cascade training avg loss: 0.130797
+[batch idx: 0] [157] Cascade training avg loss: 0.130670
+[batch idx: 0] [158] Cascade training avg loss: 0.130591
+[batch idx: 0] [159] Cascade training avg loss: 0.130506
+[batch idx: 0] [160] Cascade training avg loss: 0.130404
+[batch idx: 0] [161] Cascade training avg loss: 0.130297
+[batch idx: 0] [162] Cascade training avg loss: 0.130195
+[batch idx: 0] [163] Cascade training avg loss: 0.130132
+[batch idx: 0] [164] Cascade training avg loss: 0.130071
+[batch idx: 0] [165] Cascade training avg loss: 0.129970
+[batch idx: 0] [166] Cascade training avg loss: 0.129870
+[batch idx: 0] [167] Cascade training avg loss: 0.129765
+[batch idx: 0] [168] Cascade training avg loss: 0.129641
+[batch idx: 0] [169] Cascade training avg loss: 0.129593
+[batch idx: 0] [170] Cascade training avg loss: 0.129511
+[batch idx: 0] [171] Cascade training avg loss: 0.129483
+Early stop for ascending 3 times.
+Process layer module.layer3.0.downsample.0
+[batch idx: 0] [  0] Cascade training avg loss: 0.127654
+[batch idx: 0] [  1] Cascade training avg loss: 0.122930
+[batch idx: 0] [  2] Cascade training avg loss: 0.125654
+[batch idx: 0] [  3] Cascade training avg loss: 0.123554
+[batch idx: 0] [  4] Cascade training avg loss: 0.123082
+[batch idx: 0] [  5] Cascade training avg loss: 0.122925
+[batch idx: 0] [  6] Cascade training avg loss: 0.122731
+[batch idx: 0] [  7] Cascade training avg loss: 0.121885
+[batch idx: 0] [  8] Cascade training avg loss: 0.120970
+[batch idx: 0] [  9] Cascade training avg loss: 0.121314
+[batch idx: 0] [ 10] Cascade training avg loss: 0.121720
+[batch idx: 0] [ 11] Cascade training avg loss: 0.121889
+Early stop for ascending 3 times.
+Process layer module.layer3.1.conv1
+[batch idx: 0] [  0] Cascade training avg loss: 0.218246
+[batch idx: 0] [  1] Cascade training avg loss: 0.192826
+[batch idx: 0] [  2] Cascade training avg loss: 0.199194
+[batch idx: 0] [  3] Cascade training avg loss: 0.193449
+[batch idx: 0] [  4] Cascade training avg loss: 0.193562
+[batch idx: 0] [  5] Cascade training avg loss: 0.191556
+[batch idx: 0] [  6] Cascade training avg loss: 0.190359
+[batch idx: 0] [  7] Cascade training avg loss: 0.189575
+[batch idx: 0] [  8] Cascade training avg loss: 0.190022
+[batch idx: 0] [  9] Cascade training avg loss: 0.189726
+[batch idx: 0] [ 10] Cascade training avg loss: 0.188347
+[batch idx: 0] [ 11] Cascade training avg loss: 0.187046
+[batch idx: 0] [ 12] Cascade training avg loss: 0.185863
+[batch idx: 0] [ 13] Cascade training avg loss: 0.185942
+[batch idx: 0] [ 14] Cascade training avg loss: 0.185011
+[batch idx: 0] [ 15] Cascade training avg loss: 0.184711
+[batch idx: 0] [ 16] Cascade training avg loss: 0.183904
+[batch idx: 0] [ 17] Cascade training avg loss: 0.183732
+[batch idx: 0] [ 18] Cascade training avg loss: 0.183191
+[batch idx: 0] [ 19] Cascade training avg loss: 0.182928
+[batch idx: 0] [ 20] Cascade training avg loss: 0.182419
+[batch idx: 0] [ 21] Cascade training avg loss: 0.181732
+[batch idx: 0] [ 22] Cascade training avg loss: 0.181638
+[batch idx: 0] [ 23] Cascade training avg loss: 0.181450
+[batch idx: 0] [ 24] Cascade training avg loss: 0.180661
+[batch idx: 0] [ 25] Cascade training avg loss: 0.179749
+[batch idx: 0] [ 26] Cascade training avg loss: 0.179655
+[batch idx: 0] [ 27] Cascade training avg loss: 0.179284
+[batch idx: 0] [ 28] Cascade training avg loss: 0.178544
+[batch idx: 0] [ 29] Cascade training avg loss: 0.178134
+[batch idx: 0] [ 30] Cascade training avg loss: 0.177872
+[batch idx: 0] [ 31] Cascade training avg loss: 0.177533
+[batch idx: 0] [ 32] Cascade training avg loss: 0.176954
+[batch idx: 0] [ 33] Cascade training avg loss: 0.176388
+[batch idx: 0] [ 34] Cascade training avg loss: 0.176091
+[batch idx: 0] [ 35] Cascade training avg loss: 0.176193
+[batch idx: 0] [ 36] Cascade training avg loss: 0.175552
+[batch idx: 0] [ 37] Cascade training avg loss: 0.175439
+[batch idx: 0] [ 38] Cascade training avg loss: 0.175143
+[batch idx: 0] [ 39] Cascade training avg loss: 0.174874
+[batch idx: 0] [ 40] Cascade training avg loss: 0.174647
+[batch idx: 0] [ 41] Cascade training avg loss: 0.174196
+[batch idx: 0] [ 42] Cascade training avg loss: 0.173871
+[batch idx: 0] [ 43] Cascade training avg loss: 0.173756
+[batch idx: 0] [ 44] Cascade training avg loss: 0.173104
+[batch idx: 0] [ 45] Cascade training avg loss: 0.172733
+[batch idx: 0] [ 46] Cascade training avg loss: 0.172418
+[batch idx: 0] [ 47] Cascade training avg loss: 0.172328
+[batch idx: 0] [ 48] Cascade training avg loss: 0.172056
+[batch idx: 0] [ 49] Cascade training avg loss: 0.171693
+[batch idx: 0] [ 50] Cascade training avg loss: 0.171576
+[batch idx: 0] [ 51] Cascade training avg loss: 0.171359
+[batch idx: 0] [ 52] Cascade training avg loss: 0.171392
+[batch idx: 0] [ 53] Cascade training avg loss: 0.170951
+[batch idx: 0] [ 54] Cascade training avg loss: 0.170855
+[batch idx: 0] [ 55] Cascade training avg loss: 0.170558
+[batch idx: 0] [ 56] Cascade training avg loss: 0.170297
+[batch idx: 0] [ 57] Cascade training avg loss: 0.169940
+[batch idx: 0] [ 58] Cascade training avg loss: 0.169653
+[batch idx: 0] [ 59] Cascade training avg loss: 0.169515
+[batch idx: 0] [ 60] Cascade training avg loss: 0.169531
+[batch idx: 0] [ 61] Cascade training avg loss: 0.169284
+[batch idx: 0] [ 62] Cascade training avg loss: 0.169320
+[batch idx: 0] [ 63] Cascade training avg loss: 0.169351
+[batch idx: 0] [ 64] Cascade training avg loss: 0.169161
+[batch idx: 0] [ 65] Cascade training avg loss: 0.168975
+[batch idx: 0] [ 66] Cascade training avg loss: 0.168819
+[batch idx: 0] [ 67] Cascade training avg loss: 0.168544
+[batch idx: 0] [ 68] Cascade training avg loss: 0.168178
+[batch idx: 0] [ 69] Cascade training avg loss: 0.167911
+[batch idx: 0] [ 70] Cascade training avg loss: 0.167684
+[batch idx: 0] [ 71] Cascade training avg loss: 0.167585
+[batch idx: 0] [ 72] Cascade training avg loss: 0.167458
+[batch idx: 0] [ 73] Cascade training avg loss: 0.167169
+[batch idx: 0] [ 74] Cascade training avg loss: 0.167018
+[batch idx: 0] [ 75] Cascade training avg loss: 0.166864
+[batch idx: 0] [ 76] Cascade training avg loss: 0.166703
+[batch idx: 0] [ 77] Cascade training avg loss: 0.166648
+[batch idx: 0] [ 78] Cascade training avg loss: 0.166618
+[batch idx: 0] [ 79] Cascade training avg loss: 0.166538
+Early stop for ascending 3 times.
+Process layer module.layer3.1.conv2
+[batch idx: 0] [  0] Cascade training avg loss: 0.221377
+[batch idx: 0] [  1] Cascade training avg loss: 0.215657
+[batch idx: 0] [  2] Cascade training avg loss: 0.213479
+[batch idx: 0] [  3] Cascade training avg loss: 0.210401
+[batch idx: 0] [  4] Cascade training avg loss: 0.210152
+[batch idx: 0] [  5] Cascade training avg loss: 0.209324
+[batch idx: 0] [  6] Cascade training avg loss: 0.206847
+[batch idx: 0] [  7] Cascade training avg loss: 0.205764
+[batch idx: 0] [  8] Cascade training avg loss: 0.204868
+[batch idx: 0] [  9] Cascade training avg loss: 0.203414
+[batch idx: 0] [ 10] Cascade training avg loss: 0.202756
+[batch idx: 0] [ 11] Cascade training avg loss: 0.202581
+[batch idx: 0] [ 12] Cascade training avg loss: 0.201666
+[batch idx: 0] [ 13] Cascade training avg loss: 0.200934
+[batch idx: 0] [ 14] Cascade training avg loss: 0.200024
+[batch idx: 0] [ 15] Cascade training avg loss: 0.199124
+[batch idx: 0] [ 16] Cascade training avg loss: 0.199128
+[batch idx: 0] [ 17] Cascade training avg loss: 0.198179
+[batch idx: 0] [ 18] Cascade training avg loss: 0.198374
+[batch idx: 0] [ 19] Cascade training avg loss: 0.197542
+[batch idx: 0] [ 20] Cascade training avg loss: 0.197139
+[batch idx: 0] [ 21] Cascade training avg loss: 0.196523
+[batch idx: 0] [ 22] Cascade training avg loss: 0.196173
+[batch idx: 0] [ 23] Cascade training avg loss: 0.195687
+[batch idx: 0] [ 24] Cascade training avg loss: 0.194969
+[batch idx: 0] [ 25] Cascade training avg loss: 0.194723
+[batch idx: 0] [ 26] Cascade training avg loss: 0.194106
+[batch idx: 0] [ 27] Cascade training avg loss: 0.193614
+[batch idx: 0] [ 28] Cascade training avg loss: 0.193352
+[batch idx: 0] [ 29] Cascade training avg loss: 0.192984
+[batch idx: 0] [ 30] Cascade training avg loss: 0.192728
+[batch idx: 0] [ 31] Cascade training avg loss: 0.192743
+[batch idx: 0] [ 32] Cascade training avg loss: 0.192872
+[batch idx: 0] [ 33] Cascade training avg loss: 0.192257
+[batch idx: 0] [ 34] Cascade training avg loss: 0.191957
+[batch idx: 0] [ 35] Cascade training avg loss: 0.191875
+[batch idx: 0] [ 36] Cascade training avg loss: 0.191615
+[batch idx: 0] [ 37] Cascade training avg loss: 0.191249
+[batch idx: 0] [ 38] Cascade training avg loss: 0.191079
+[batch idx: 0] [ 39] Cascade training avg loss: 0.190816
+[batch idx: 0] [ 40] Cascade training avg loss: 0.190449
+[batch idx: 0] [ 41] Cascade training avg loss: 0.190342
+[batch idx: 0] [ 42] Cascade training avg loss: 0.190009
+[batch idx: 0] [ 43] Cascade training avg loss: 0.189948
+[batch idx: 0] [ 44] Cascade training avg loss: 0.189855
+[batch idx: 0] [ 45] Cascade training avg loss: 0.189519
+[batch idx: 0] [ 46] Cascade training avg loss: 0.189505
+[batch idx: 0] [ 47] Cascade training avg loss: 0.189184
+[batch idx: 0] [ 48] Cascade training avg loss: 0.189256
+[batch idx: 0] [ 49] Cascade training avg loss: 0.188948
+[batch idx: 0] [ 50] Cascade training avg loss: 0.188805
+[batch idx: 0] [ 51] Cascade training avg loss: 0.188838
+[batch idx: 0] [ 52] Cascade training avg loss: 0.188531
+[batch idx: 0] [ 53] Cascade training avg loss: 0.188435
+[batch idx: 0] [ 54] Cascade training avg loss: 0.188225
+[batch idx: 0] [ 55] Cascade training avg loss: 0.187902
+[batch idx: 0] [ 56] Cascade training avg loss: 0.187775
+[batch idx: 0] [ 57] Cascade training avg loss: 0.187471
+[batch idx: 0] [ 58] Cascade training avg loss: 0.187384
+[batch idx: 0] [ 59] Cascade training avg loss: 0.187326
+[batch idx: 0] [ 60] Cascade training avg loss: 0.187371
+Early stop for ascending 3 times.
+Process layer module.layer3.2.conv1
+[batch idx: 0] [  0] Cascade training avg loss: 0.238863
+[batch idx: 0] [  1] Cascade training avg loss: 0.224030
+[batch idx: 0] [  2] Cascade training avg loss: 0.230966
+[batch idx: 0] [  3] Cascade training avg loss: 0.231305
+[batch idx: 0] [  4] Cascade training avg loss: 0.230059
+[batch idx: 0] [  5] Cascade training avg loss: 0.229000
+[batch idx: 0] [  6] Cascade training avg loss: 0.227617
+[batch idx: 0] [  7] Cascade training avg loss: 0.225583
+[batch idx: 0] [  8] Cascade training avg loss: 0.225157
+[batch idx: 0] [  9] Cascade training avg loss: 0.224779
+[batch idx: 0] [ 10] Cascade training avg loss: 0.223985
+[batch idx: 0] [ 11] Cascade training avg loss: 0.222032
+[batch idx: 0] [ 12] Cascade training avg loss: 0.221050
+[batch idx: 0] [ 13] Cascade training avg loss: 0.220282
+[batch idx: 0] [ 14] Cascade training avg loss: 0.219996
+[batch idx: 0] [ 15] Cascade training avg loss: 0.218429
+[batch idx: 0] [ 16] Cascade training avg loss: 0.217835
+[batch idx: 0] [ 17] Cascade training avg loss: 0.216786
+[batch idx: 0] [ 18] Cascade training avg loss: 0.216065
+[batch idx: 0] [ 19] Cascade training avg loss: 0.215712
+[batch idx: 0] [ 20] Cascade training avg loss: 0.214957
+[batch idx: 0] [ 21] Cascade training avg loss: 0.214567
+[batch idx: 0] [ 22] Cascade training avg loss: 0.213768
+[batch idx: 0] [ 23] Cascade training avg loss: 0.213331
+[batch idx: 0] [ 24] Cascade training avg loss: 0.212847
+[batch idx: 0] [ 25] Cascade training avg loss: 0.212727
+[batch idx: 0] [ 26] Cascade training avg loss: 0.212370
+[batch idx: 0] [ 27] Cascade training avg loss: 0.212536
+[batch idx: 0] [ 28] Cascade training avg loss: 0.212364
+[batch idx: 0] [ 29] Cascade training avg loss: 0.212209
+[batch idx: 0] [ 30] Cascade training avg loss: 0.211628
+[batch idx: 0] [ 31] Cascade training avg loss: 0.212087
+[batch idx: 0] [ 32] Cascade training avg loss: 0.211962
+[batch idx: 0] [ 33] Cascade training avg loss: 0.211935
+[batch idx: 0] [ 34] Cascade training avg loss: 0.211664
+[batch idx: 0] [ 35] Cascade training avg loss: 0.211815
+[batch idx: 0] [ 36] Cascade training avg loss: 0.211341
+[batch idx: 0] [ 37] Cascade training avg loss: 0.211376
+[batch idx: 0] [ 38] Cascade training avg loss: 0.211271
+[batch idx: 0] [ 39] Cascade training avg loss: 0.211125
+[batch idx: 0] [ 40] Cascade training avg loss: 0.210997
+[batch idx: 0] [ 41] Cascade training avg loss: 0.210605
+[batch idx: 0] [ 42] Cascade training avg loss: 0.210271
+[batch idx: 0] [ 43] Cascade training avg loss: 0.210182
+[batch idx: 0] [ 44] Cascade training avg loss: 0.209974
+[batch idx: 0] [ 45] Cascade training avg loss: 0.210082
+[batch idx: 0] [ 46] Cascade training avg loss: 0.210030
+[batch idx: 0] [ 47] Cascade training avg loss: 0.209966
+Early stop for ascending 3 times.
+Process layer module.layer3.2.conv2
+[batch idx: 0] [  0] Cascade training avg loss: 0.214104
+[batch idx: 0] [  1] Cascade training avg loss: 0.212670
+[batch idx: 0] [  2] Cascade training avg loss: 0.208013
+[batch idx: 0] [  3] Cascade training avg loss: 0.211928
+[batch idx: 0] [  4] Cascade training avg loss: 0.209231
+[batch idx: 0] [  5] Cascade training avg loss: 0.207185
+[batch idx: 0] [  6] Cascade training avg loss: 0.206594
+[batch idx: 0] [  7] Cascade training avg loss: 0.208383
+[batch idx: 0] [  8] Cascade training avg loss: 0.207597
+[batch idx: 0] [  9] Cascade training avg loss: 0.207021
+[batch idx: 0] [ 10] Cascade training avg loss: 0.207610
+[batch idx: 0] [ 11] Cascade training avg loss: 0.208193
+[batch idx: 0] [ 12] Cascade training avg loss: 0.208530
+Early stop for ascending 3 times.
+Process layer module.fc
+[batch idx: 0] [  0] Cascade training avg loss: 0.251616
+[batch idx: 0] [  1] Cascade training avg loss: 0.254643
+[batch idx: 0] [  2] Cascade training avg loss: 0.255446
+Early stop for ascending 3 times.

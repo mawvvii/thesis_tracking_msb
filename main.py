@@ -27,7 +27,7 @@ parser.add_argument('--model_name', default='ResNet20', type=str, help='Name of 
 parser.add_argument('--dataset_name', default='CIFAR10', type=str, help='Name of dataset used')
 parser.add_argument('--exp_sec', default='', type=str, help='Specification of this experiments, '
 															'which is used for name of saved file')
-parser.add_argument('--kbits', default=3, type=int, help='Number of quantized bits')
+parser.add_argument('--kbits', default=16, type=int, help='Number of quantized bits')
 parser.add_argument('--require_first_test', default=False, type=bool, help='Whether to perform test before quantization to '
 																		   'check effectivity of pretrained model')
 parser.add_argument('--quantized_first_and_last', default=True, type=bool, help='Whether to quantize first and last layer')
@@ -158,3 +158,5 @@ for layer_idx, layer_name in enumerate(layer_collection_list):
 torch.save(quantized_net.module.state_dict() if use_cuda else quantized_net.state_dict(), quantized_path)
 train_record.close()
 val_record.close()
+
+#checking 

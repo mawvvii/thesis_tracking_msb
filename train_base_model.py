@@ -1,10 +1,9 @@
+from __future__ import print_function
 '''Train CIFAR10 with PyTorch.'''
 
 """
 This code is forked and modified from 'https://github.com/kuangliu/pytorch-cifar'. Thanks to its contribution.
 """
-from __future__ import print_function
-
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -31,7 +30,7 @@ args = parser.parse_args()
 use_cuda = torch.cuda.is_available()
 best_acc = 0  # best test accuracy
 start_epoch = 0  # start from epoch 0 or last checkpoint epoch
-model_name = 'resnet56'
+model_name = 'resnet20'
 
 # Data
 print('==> Preparing data..')

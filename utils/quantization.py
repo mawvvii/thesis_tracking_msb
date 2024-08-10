@@ -189,7 +189,67 @@ def quantize(V, alpha, beta=0, kbits=3):
 
         Q = pos_one + pos_two + pos_four + pos_eight + pos_sixteen + \
             neg_one + neg_two + neg_four + neg_eight + neg_sixteen
+    elif kbits == 8:
 
+        if isinstance(V, np.ndarray):
+            pos_one = 1 * ((V > 0.5 * alpha) & (V < 1.5 * alpha))
+            pos_two = 2 * ((V > 1.5 * alpha) & (V < 3 * alpha))
+            pos_four = 4 * ((V > 3 * alpha) & (V < 6 * alpha))
+            pos_eight = 8 * (V > 6 * alpha)
+
+            neg_one = -1 * ((V < -0.5 * alpha) & (V > -1.5 * alpha))
+            neg_two = -2 * ((V < -1.5 * alpha) & (V > -3 * alpha))
+            neg_four = -4 * ((V < -3 * alpha) & (V > -6 * alpha))
+            neg_eight = -8 * (V < -6 * alpha)
+        else:
+            data_type = type(V)
+            pos_one = 1 * ((V > 0.5 * alpha) & (V < 1.5 * alpha)).type(data_type)
+            pos_two = 2 * ((V > 1.5 * alpha) & (V < 3 * alpha)).type(data_type)
+            pos_four = 4 * ((V > 3 * alpha) & (V < 6 * alpha)).type(data_type)
+            pos_eight = 8 * (V > 6 * alpha).type(data_type)
+
+            neg_one = -1 * ((V < -0.5 * alpha) & (V > -1.5 * alpha)).type(data_type)
+            neg_two = -2 * ((V < -1.5 * alpha) & (V > -3 * alpha)).type(data_type)
+            neg_four = -4 * ((V < -3 * alpha) & (V > -6 * alpha)).type(data_type)
+            neg_eight = -8 * (V < -6 * alpha).type(data_type)
+
+        Q = pos_one + pos_two + pos_four + pos_eight + neg_one + neg_two + neg_four + neg_eight
+
+    elif kbits == 16:
+
+        if isinstance(V, np.ndarray):
+            pos_one = 1 * ((V > 0.5 * alpha) & (V < 1.5 * alpha))
+            pos_two = 2 * ((V > 1.5 * alpha) & (V < 3 * alpha))
+            pos_four = 4 * ((V > 3 * alpha) & (V < 6 * alpha))
+            pos_eight = 8 * ((V > 6 * alpha) & (V < 12 * alpha))
+            pos_sixteen = 16 * ((V > 12 * alpha) & (V < 24 * alpha))
+            pos_thirty_two = 32 * (V > 24 * alpha)
+
+            neg_one = -1 * ((V < -0.5 * alpha) & (V > -1.5 * alpha))
+            neg_two = -2 * ((V < -1.5 * alpha) & (V > -3 * alpha))
+            neg_four = -4 * ((V < -3 * alpha) & (V > -6 * alpha))
+            neg_eight = -8 * ((V < -6 * alpha) & (V > -12 * alpha))
+            neg_sixteen = -16 * ((V < -12 * alpha) & (V > -24 * alpha))
+            neg_thirty_two = -32 * (V < -24 * alpha)
+        else:
+            data_type = type(V)
+            pos_one = 1 * ((V > 0.5 * alpha) & (V < 1.5 * alpha)).type(data_type)
+            pos_two = 2 * ((V > 1.5 * alpha) & (V < 3 * alpha)).type(data_type)
+            pos_four = 4 * ((V > 3 * alpha) & (V < 6 * alpha)).type(data_type)
+            pos_eight = 8 * ((V > 6 * alpha) & (V < 12 * alpha)).type(data_type)
+            pos_sixteen = 16 * ((V > 12 * alpha) & (V < 24 * alpha)).type(data_type)
+            pos_thirty_two = 32 * (V > 24 * alpha).type(data_type)
+
+            neg_one = -1 * ((V < -0.5 * alpha) & (V > -1.5 * alpha)).type(data_type)
+            neg_two = -2 * ((V < -1.5 * alpha) & (V > -3 * alpha)).type(data_type)
+            neg_four = -4 * ((V < -3 * alpha) & (V > -6 * alpha)).type(data_type)
+            neg_eight = -8 * ((V < -6 * alpha) & (V > -12 * alpha)).type(data_type)
+            neg_sixteen = -16 * ((V < -12 * alpha) & (V > -24 * alpha)).type(data_type)
+            neg_thirty_two = -32 * (V < -24 * alpha).type(data_type)
+
+        Q = pos_one + pos_two + pos_four + pos_eight + pos_sixteen + pos_thirty_two + \
+            neg_one + neg_two + neg_four + neg_eight + neg_sixteen + neg_thirty_two
+    
     else:
         print('Such quantization interval is not implemented yet. Please try one of 3,5,7,9,11')
         raise NotImplementedError

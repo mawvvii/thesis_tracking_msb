@@ -1,0 +1,12 @@
+Confusion Matrix
+	plane	car	bird	cat	deer	dog	frog	horse	ship	truck
+plane	462	0	42	280	85	3	8	0	120	0
+car	23	406	8	369	22	1	55	1	107	8
+bird	16	0	462	353	124	19	16	3	7	0
+cat	0	0	16	894	41	30	10	4	5	0
+deer	2	0	14	276	677	16	10	0	5	0
+dog	4	0	15	415	55	482	13	13	3	0
+frog	2	0	26	366	40	11	552	0	3	0
+horse	2	0	24	201	286	77	7	391	12	0
+ship	10	0	9	205	29	4	6	0	737	0
+truck	22	25	15	268	49	30	31	2	259	299
