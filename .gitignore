@@ -104,4 +104,7 @@ venv.bak/
 .mypy_cache/
 
 *.pkl
-.idea/
+.idea/CIFAR10_50percent/CIFAR10_modified05.pt
+CIFAR10_modified/CIFAR10_modified.pt
+CIFAR10_modified100/CIFAR10_modified100.pt
+CIFAR10_50percent/cifar-10-python.tar.gz
