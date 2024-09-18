@@ -1,0 +1,387 @@
+// Model State Dict
+digraph {
+	conv1 [label=conv1]
+	"conv1.weight" [label="weight ([16, 3, 3, 3])"]
+	conv1 -> "conv1.weight"
+	bn1 [label=bn1]
+	"bn1.weight" [label="weight ([16])"]
+	bn1 -> "bn1.weight"
+	bn1 [label=bn1]
+	"bn1.bias" [label="bias ([16])"]
+	bn1 -> "bn1.bias"
+	bn1 [label=bn1]
+	"bn1.running_mean" [label="running_mean ([16])"]
+	bn1 -> "bn1.running_mean"
+	bn1 [label=bn1]
+	"bn1.running_var" [label="running_var ([16])"]
+	bn1 -> "bn1.running_var"
+	bn1 [label=bn1]
+	"bn1.num_batches_tracked" [label="num_batches_tracked ([])"]
+	bn1 -> "bn1.num_batches_tracked"
+	layer1 [label=layer1]
+	"layer1.0.conv1.weight" [label="0 ([16, 16, 3, 3])"]
+	layer1 -> "layer1.0.conv1.weight"
+	layer1 [label=layer1]
+	"layer1.0.bn1.weight" [label="0 ([16])"]
+	layer1 -> "layer1.0.bn1.weight"
+	layer1 [label=layer1]
+	"layer1.0.bn1.bias" [label="0 ([16])"]
+	layer1 -> "layer1.0.bn1.bias"
+	layer1 [label=layer1]
+	"layer1.0.bn1.running_mean" [label="0 ([16])"]
+	layer1 -> "layer1.0.bn1.running_mean"
+	layer1 [label=layer1]
+	"layer1.0.bn1.running_var" [label="0 ([16])"]
+	layer1 -> "layer1.0.bn1.running_var"
+	layer1 [label=layer1]
+	"layer1.0.bn1.num_batches_tracked" [label="0 ([])"]
+	layer1 -> "layer1.0.bn1.num_batches_tracked"
+	layer1 [label=layer1]
+	"layer1.0.conv2.weight" [label="0 ([16, 16, 3, 3])"]
+	layer1 -> "layer1.0.conv2.weight"
+	layer1 [label=layer1]
+	"layer1.0.bn2.weight" [label="0 ([16])"]
+	layer1 -> "layer1.0.bn2.weight"
+	layer1 [label=layer1]
+	"layer1.0.bn2.bias" [label="0 ([16])"]
+	layer1 -> "layer1.0.bn2.bias"
+	layer1 [label=layer1]
+	"layer1.0.bn2.running_mean" [label="0 ([16])"]
+	layer1 -> "layer1.0.bn2.running_mean"
+	layer1 [label=layer1]
+	"layer1.0.bn2.running_var" [label="0 ([16])"]
+	layer1 -> "layer1.0.bn2.running_var"
+	layer1 [label=layer1]
+	"layer1.0.bn2.num_batches_tracked" [label="0 ([])"]
+	layer1 -> "layer1.0.bn2.num_batches_tracked"
+	layer1 [label=layer1]
+	"layer1.1.conv1.weight" [label="1 ([16, 16, 3, 3])"]
+	layer1 -> "layer1.1.conv1.weight"
+	layer1 [label=layer1]
+	"layer1.1.bn1.weight" [label="1 ([16])"]
+	layer1 -> "layer1.1.bn1.weight"
+	layer1 [label=layer1]
+	"layer1.1.bn1.bias" [label="1 ([16])"]
+	layer1 -> "layer1.1.bn1.bias"
+	layer1 [label=layer1]
+	"layer1.1.bn1.running_mean" [label="1 ([16])"]
+	layer1 -> "layer1.1.bn1.running_mean"
+	layer1 [label=layer1]
+	"layer1.1.bn1.running_var" [label="1 ([16])"]
+	layer1 -> "layer1.1.bn1.running_var"
+	layer1 [label=layer1]
+	"layer1.1.bn1.num_batches_tracked" [label="1 ([])"]
+	layer1 -> "layer1.1.bn1.num_batches_tracked"
+	layer1 [label=layer1]
+	"layer1.1.conv2.weight" [label="1 ([16, 16, 3, 3])"]
+	layer1 -> "layer1.1.conv2.weight"
+	layer1 [label=layer1]
+	"layer1.1.bn2.weight" [label="1 ([16])"]
+	layer1 -> "layer1.1.bn2.weight"
+	layer1 [label=layer1]
+	"layer1.1.bn2.bias" [label="1 ([16])"]
+	layer1 -> "layer1.1.bn2.bias"
+	layer1 [label=layer1]
+	"layer1.1.bn2.running_mean" [label="1 ([16])"]
+	layer1 -> "layer1.1.bn2.running_mean"
+	layer1 [label=layer1]
+	"layer1.1.bn2.running_var" [label="1 ([16])"]
+	layer1 -> "layer1.1.bn2.running_var"
+	layer1 [label=layer1]
+	"layer1.1.bn2.num_batches_tracked" [label="1 ([])"]
+	layer1 -> "layer1.1.bn2.num_batches_tracked"
+	layer1 [label=layer1]
+	"layer1.2.conv1.weight" [label="2 ([16, 16, 3, 3])"]
+	layer1 -> "layer1.2.conv1.weight"
+	layer1 [label=layer1]
+	"layer1.2.bn1.weight" [label="2 ([16])"]
+	layer1 -> "layer1.2.bn1.weight"
+	layer1 [label=layer1]
+	"layer1.2.bn1.bias" [label="2 ([16])"]
+	layer1 -> "layer1.2.bn1.bias"
+	layer1 [label=layer1]
+	"layer1.2.bn1.running_mean" [label="2 ([16])"]
+	layer1 -> "layer1.2.bn1.running_mean"
+	layer1 [label=layer1]
+	"layer1.2.bn1.running_var" [label="2 ([16])"]
+	layer1 -> "layer1.2.bn1.running_var"
+	layer1 [label=layer1]
+	"layer1.2.bn1.num_batches_tracked" [label="2 ([])"]
+	layer1 -> "layer1.2.bn1.num_batches_tracked"
+	layer1 [label=layer1]
+	"layer1.2.conv2.weight" [label="2 ([16, 16, 3, 3])"]
+	layer1 -> "layer1.2.conv2.weight"
+	layer1 [label=layer1]
+	"layer1.2.bn2.weight" [label="2 ([16])"]
+	layer1 -> "layer1.2.bn2.weight"
+	layer1 [label=layer1]
+	"layer1.2.bn2.bias" [label="2 ([16])"]
+	layer1 -> "layer1.2.bn2.bias"
+	layer1 [label=layer1]
+	"layer1.2.bn2.running_mean" [label="2 ([16])"]
+	layer1 -> "layer1.2.bn2.running_mean"
+	layer1 [label=layer1]
+	"layer1.2.bn2.running_var" [label="2 ([16])"]
+	layer1 -> "layer1.2.bn2.running_var"
+	layer1 [label=layer1]
+	"layer1.2.bn2.num_batches_tracked" [label="2 ([])"]
+	layer1 -> "layer1.2.bn2.num_batches_tracked"
+	layer2 [label=layer2]
+	"layer2.0.conv1.weight" [label="0 ([32, 16, 3, 3])"]
+	layer2 -> "layer2.0.conv1.weight"
+	layer2 [label=layer2]
+	"layer2.0.bn1.weight" [label="0 ([32])"]
+	layer2 -> "layer2.0.bn1.weight"
+	layer2 [label=layer2]
+	"layer2.0.bn1.bias" [label="0 ([32])"]
+	layer2 -> "layer2.0.bn1.bias"
+	layer2 [label=layer2]
+	"layer2.0.bn1.running_mean" [label="0 ([32])"]
+	layer2 -> "layer2.0.bn1.running_mean"
+	layer2 [label=layer2]
+	"layer2.0.bn1.running_var" [label="0 ([32])"]
+	layer2 -> "layer2.0.bn1.running_var"
+	layer2 [label=layer2]
+	"layer2.0.bn1.num_batches_tracked" [label="0 ([])"]
+	layer2 -> "layer2.0.bn1.num_batches_tracked"
+	layer2 [label=layer2]
+	"layer2.0.conv2.weight" [label="0 ([32, 32, 3, 3])"]
+	layer2 -> "layer2.0.conv2.weight"
+	layer2 [label=layer2]
+	"layer2.0.bn2.weight" [label="0 ([32])"]
+	layer2 -> "layer2.0.bn2.weight"
+	layer2 [label=layer2]
+	"layer2.0.bn2.bias" [label="0 ([32])"]
+	layer2 -> "layer2.0.bn2.bias"
+	layer2 [label=layer2]
+	"layer2.0.bn2.running_mean" [label="0 ([32])"]
+	layer2 -> "layer2.0.bn2.running_mean"
+	layer2 [label=layer2]
+	"layer2.0.bn2.running_var" [label="0 ([32])"]
+	layer2 -> "layer2.0.bn2.running_var"
+	layer2 [label=layer2]
+	"layer2.0.bn2.num_batches_tracked" [label="0 ([])"]
+	layer2 -> "layer2.0.bn2.num_batches_tracked"
+	layer2 [label=layer2]
+	"layer2.0.downsample.0.weight" [label="0 ([32, 16, 1, 1])"]
+	layer2 -> "layer2.0.downsample.0.weight"
+	layer2 [label=layer2]
+	"layer2.0.downsample.1.weight" [label="0 ([32])"]
+	layer2 -> "layer2.0.downsample.1.weight"
+	layer2 [label=layer2]
+	"layer2.0.downsample.1.bias" [label="0 ([32])"]
+	layer2 -> "layer2.0.downsample.1.bias"
+	layer2 [label=layer2]
+	"layer2.0.downsample.1.running_mean" [label="0 ([32])"]
+	layer2 -> "layer2.0.downsample.1.running_mean"
+	layer2 [label=layer2]
+	"layer2.0.downsample.1.running_var" [label="0 ([32])"]
+	layer2 -> "layer2.0.downsample.1.running_var"
+	layer2 [label=layer2]
+	"layer2.0.downsample.1.num_batches_tracked" [label="0 ([])"]
+	layer2 -> "layer2.0.downsample.1.num_batches_tracked"
+	layer2 [label=layer2]
+	"layer2.1.conv1.weight" [label="1 ([32, 32, 3, 3])"]
+	layer2 -> "layer2.1.conv1.weight"
+	layer2 [label=layer2]
+	"layer2.1.bn1.weight" [label="1 ([32])"]
+	layer2 -> "layer2.1.bn1.weight"
+	layer2 [label=layer2]
+	"layer2.1.bn1.bias" [label="1 ([32])"]
+	layer2 -> "layer2.1.bn1.bias"
+	layer2 [label=layer2]
+	"layer2.1.bn1.running_mean" [label="1 ([32])"]
+	layer2 -> "layer2.1.bn1.running_mean"
+	layer2 [label=layer2]
+	"layer2.1.bn1.running_var" [label="1 ([32])"]
+	layer2 -> "layer2.1.bn1.running_var"
+	layer2 [label=layer2]
+	"layer2.1.bn1.num_batches_tracked" [label="1 ([])"]
+	layer2 -> "layer2.1.bn1.num_batches_tracked"
+	layer2 [label=layer2]
+	"layer2.1.conv2.weight" [label="1 ([32, 32, 3, 3])"]
+	layer2 -> "layer2.1.conv2.weight"
+	layer2 [label=layer2]
+	"layer2.1.bn2.weight" [label="1 ([32])"]
+	layer2 -> "layer2.1.bn2.weight"
+	layer2 [label=layer2]
+	"layer2.1.bn2.bias" [label="1 ([32])"]
+	layer2 -> "layer2.1.bn2.bias"
+	layer2 [label=layer2]
+	"layer2.1.bn2.running_mean" [label="1 ([32])"]
+	layer2 -> "layer2.1.bn2.running_mean"
+	layer2 [label=layer2]
+	"layer2.1.bn2.running_var" [label="1 ([32])"]
+	layer2 -> "layer2.1.bn2.running_var"
+	layer2 [label=layer2]
+	"layer2.1.bn2.num_batches_tracked" [label="1 ([])"]
+	layer2 -> "layer2.1.bn2.num_batches_tracked"
+	layer2 [label=layer2]
+	"layer2.2.conv1.weight" [label="2 ([32, 32, 3, 3])"]
+	layer2 -> "layer2.2.conv1.weight"
+	layer2 [label=layer2]
+	"layer2.2.bn1.weight" [label="2 ([32])"]
+	layer2 -> "layer2.2.bn1.weight"
+	layer2 [label=layer2]
+	"layer2.2.bn1.bias" [label="2 ([32])"]
+	layer2 -> "layer2.2.bn1.bias"
+	layer2 [label=layer2]
+	"layer2.2.bn1.running_mean" [label="2 ([32])"]
+	layer2 -> "layer2.2.bn1.running_mean"
+	layer2 [label=layer2]
+	"layer2.2.bn1.running_var" [label="2 ([32])"]
+	layer2 -> "layer2.2.bn1.running_var"
+	layer2 [label=layer2]
+	"layer2.2.bn1.num_batches_tracked" [label="2 ([])"]
+	layer2 -> "layer2.2.bn1.num_batches_tracked"
+	layer2 [label=layer2]
+	"layer2.2.conv2.weight" [label="2 ([32, 32, 3, 3])"]
+	layer2 -> "layer2.2.conv2.weight"
+	layer2 [label=layer2]
+	"layer2.2.bn2.weight" [label="2 ([32])"]
+	layer2 -> "layer2.2.bn2.weight"
+	layer2 [label=layer2]
+	"layer2.2.bn2.bias" [label="2 ([32])"]
+	layer2 -> "layer2.2.bn2.bias"
+	layer2 [label=layer2]
+	"layer2.2.bn2.running_mean" [label="2 ([32])"]
+	layer2 -> "layer2.2.bn2.running_mean"
+	layer2 [label=layer2]
+	"layer2.2.bn2.running_var" [label="2 ([32])"]
+	layer2 -> "layer2.2.bn2.running_var"
+	layer2 [label=layer2]
+	"layer2.2.bn2.num_batches_tracked" [label="2 ([])"]
+	layer2 -> "layer2.2.bn2.num_batches_tracked"
+	layer3 [label=layer3]
+	"layer3.0.conv1.weight" [label="0 ([64, 32, 3, 3])"]
+	layer3 -> "layer3.0.conv1.weight"
+	layer3 [label=layer3]
+	"layer3.0.bn1.weight" [label="0 ([64])"]
+	layer3 -> "layer3.0.bn1.weight"
+	layer3 [label=layer3]
+	"layer3.0.bn1.bias" [label="0 ([64])"]
+	layer3 -> "layer3.0.bn1.bias"
+	layer3 [label=layer3]
+	"layer3.0.bn1.running_mean" [label="0 ([64])"]
+	layer3 -> "layer3.0.bn1.running_mean"
+	layer3 [label=layer3]
+	"layer3.0.bn1.running_var" [label="0 ([64])"]
+	layer3 -> "layer3.0.bn1.running_var"
+	layer3 [label=layer3]
+	"layer3.0.bn1.num_batches_tracked" [label="0 ([])"]
+	layer3 -> "layer3.0.bn1.num_batches_tracked"
+	layer3 [label=layer3]
+	"layer3.0.conv2.weight" [label="0 ([64, 64, 3, 3])"]
+	layer3 -> "layer3.0.conv2.weight"
+	layer3 [label=layer3]
+	"layer3.0.bn2.weight" [label="0 ([64])"]
+	layer3 -> "layer3.0.bn2.weight"
+	layer3 [label=layer3]
+	"layer3.0.bn2.bias" [label="0 ([64])"]
+	layer3 -> "layer3.0.bn2.bias"
+	layer3 [label=layer3]
+	"layer3.0.bn2.running_mean" [label="0 ([64])"]
+	layer3 -> "layer3.0.bn2.running_mean"
+	layer3 [label=layer3]
+	"layer3.0.bn2.running_var" [label="0 ([64])"]
+	layer3 -> "layer3.0.bn2.running_var"
+	layer3 [label=layer3]
+	"layer3.0.bn2.num_batches_tracked" [label="0 ([])"]
+	layer3 -> "layer3.0.bn2.num_batches_tracked"
+	layer3 [label=layer3]
+	"layer3.0.downsample.0.weight" [label="0 ([64, 32, 1, 1])"]
+	layer3 -> "layer3.0.downsample.0.weight"
+	layer3 [label=layer3]
+	"layer3.0.downsample.1.weight" [label="0 ([64])"]
+	layer3 -> "layer3.0.downsample.1.weight"
+	layer3 [label=layer3]
+	"layer3.0.downsample.1.bias" [label="0 ([64])"]
+	layer3 -> "layer3.0.downsample.1.bias"
+	layer3 [label=layer3]
+	"layer3.0.downsample.1.running_mean" [label="0 ([64])"]
+	layer3 -> "layer3.0.downsample.1.running_mean"
+	layer3 [label=layer3]
+	"layer3.0.downsample.1.running_var" [label="0 ([64])"]
+	layer3 -> "layer3.0.downsample.1.running_var"
+	layer3 [label=layer3]
+	"layer3.0.downsample.1.num_batches_tracked" [label="0 ([])"]
+	layer3 -> "layer3.0.downsample.1.num_batches_tracked"
+	layer3 [label=layer3]
+	"layer3.1.conv1.weight" [label="1 ([64, 64, 3, 3])"]
+	layer3 -> "layer3.1.conv1.weight"
+	layer3 [label=layer3]
+	"layer3.1.bn1.weight" [label="1 ([64])"]
+	layer3 -> "layer3.1.bn1.weight"
+	layer3 [label=layer3]
+	"layer3.1.bn1.bias" [label="1 ([64])"]
+	layer3 -> "layer3.1.bn1.bias"
+	layer3 [label=layer3]
+	"layer3.1.bn1.running_mean" [label="1 ([64])"]
+	layer3 -> "layer3.1.bn1.running_mean"
+	layer3 [label=layer3]
+	"layer3.1.bn1.running_var" [label="1 ([64])"]
+	layer3 -> "layer3.1.bn1.running_var"
+	layer3 [label=layer3]
+	"layer3.1.bn1.num_batches_tracked" [label="1 ([])"]
+	layer3 -> "layer3.1.bn1.num_batches_tracked"
+	layer3 [label=layer3]
+	"layer3.1.conv2.weight" [label="1 ([64, 64, 3, 3])"]
+	layer3 -> "layer3.1.conv2.weight"
+	layer3 [label=layer3]
+	"layer3.1.bn2.weight" [label="1 ([64])"]
+	layer3 -> "layer3.1.bn2.weight"
+	layer3 [label=layer3]
+	"layer3.1.bn2.bias" [label="1 ([64])"]
+	layer3 -> "layer3.1.bn2.bias"
+	layer3 [label=layer3]
+	"layer3.1.bn2.running_mean" [label="1 ([64])"]
+	layer3 -> "layer3.1.bn2.running_mean"
+	layer3 [label=layer3]
+	"layer3.1.bn2.running_var" [label="1 ([64])"]
+	layer3 -> "layer3.1.bn2.running_var"
+	layer3 [label=layer3]
+	"layer3.1.bn2.num_batches_tracked" [label="1 ([])"]
+	layer3 -> "layer3.1.bn2.num_batches_tracked"
+	layer3 [label=layer3]
+	"layer3.2.conv1.weight" [label="2 ([64, 64, 3, 3])"]
+	layer3 -> "layer3.2.conv1.weight"
+	layer3 [label=layer3]
+	"layer3.2.bn1.weight" [label="2 ([64])"]
+	layer3 -> "layer3.2.bn1.weight"
+	layer3 [label=layer3]
+	"layer3.2.bn1.bias" [label="2 ([64])"]
+	layer3 -> "layer3.2.bn1.bias"
+	layer3 [label=layer3]
+	"layer3.2.bn1.running_mean" [label="2 ([64])"]
+	layer3 -> "layer3.2.bn1.running_mean"
+	layer3 [label=layer3]
+	"layer3.2.bn1.running_var" [label="2 ([64])"]
+	layer3 -> "layer3.2.bn1.running_var"
+	layer3 [label=layer3]
+	"layer3.2.bn1.num_batches_tracked" [label="2 ([])"]
+	layer3 -> "layer3.2.bn1.num_batches_tracked"
+	layer3 [label=layer3]
+	"layer3.2.conv2.weight" [label="2 ([64, 64, 3, 3])"]
+	layer3 -> "layer3.2.conv2.weight"
+	layer3 [label=layer3]
+	"layer3.2.bn2.weight" [label="2 ([64])"]
+	layer3 -> "layer3.2.bn2.weight"
+	layer3 [label=layer3]
+	"layer3.2.bn2.bias" [label="2 ([64])"]
+	layer3 -> "layer3.2.bn2.bias"
+	layer3 [label=layer3]
+	"layer3.2.bn2.running_mean" [label="2 ([64])"]
+	layer3 -> "layer3.2.bn2.running_mean"
+	layer3 [label=layer3]
+	"layer3.2.bn2.running_var" [label="2 ([64])"]
+	layer3 -> "layer3.2.bn2.running_var"
+	layer3 [label=layer3]
+	"layer3.2.bn2.num_batches_tracked" [label="2 ([])"]
+	layer3 -> "layer3.2.bn2.num_batches_tracked"
+	fc [label=fc]
+	"fc.weight" [label="weight ([10, 64])"]
+	fc -> "fc.weight"
+	fc [label=fc]
+	"fc.bias" [label="bias ([10])"]
+	fc -> "fc.bias"
+}
