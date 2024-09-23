@@ -31,13 +31,37 @@ text_inputs = tokenizer(class_names)
 
 torch.cuda.empty_cache()
 
-# Preprocess the CIFAR-10 test images (image inputs for the CLIP model)
-test_loader = get_dataloader('CIFAR10', 'test', batch_size=50, shuffle=False)
+from torchvision import datasets, transforms
+from torch.utils.data import DataLoader
 
-# Check model summary
-summary(model, input_size=(3, 32, 32))
+# Update transformation to resize but don't convert to tensor yet
+transform = transforms.Compose([
+    transforms.Resize((224, 224)),  # Resize images to 224x224
+    # Don't convert to tensor here; preprocess_val will handle it
+])
 
-# Updated evaluation function with AMP and text input comparison
+# Load CIFAR-10 test data as PIL images
+test_dataset = datasets.CIFAR10(root='./data', train=False, download=True, transform=transform)
+# Define a custom collate function to apply CLIP preprocessing (preprocess_val)
+def custom_collate_fn(batch):
+    # Unpack batch (list of tuples (image, label))
+    images, labels = zip(*batch)
+    
+    # Apply CLIP preprocessing to each image
+    images = [preprocess_val(image) for image in images]
+    
+    # Stack tensors to create a batch
+    images = torch.stack(images)
+    labels = torch.tensor(labels)
+    
+    return images, labels
+
+# Load CIFAR-10 test data with the custom collate function
+test_loader = DataLoader(test_dataset, batch_size=50, shuffle=False, collate_fn=custom_collate_fn)
+
+# # Check model summary
+# summary(model, input_size=(3, 224, 224))
+
 def evaluate_clip_model_accuracy_amp(model, dataloader, text_inputs):
     model.eval()
     correct = 0
@@ -46,11 +70,8 @@ def evaluate_clip_model_accuracy_amp(model, dataloader, text_inputs):
         for inputs, labels in dataloader:
             inputs, labels = inputs.to('cuda'), labels.to('cuda')
 
-            # Preprocess the inputs using CLIP's transformations
-            inputs = preprocess_val(inputs)
-            
-            # Use autocast for mixed precision
-            with autocast():
+            # Use autocast for mixed precision, specifying the device type as 'cuda'
+            with autocast(device_type='cuda'):
                 image_features = model.encode_image(inputs)
                 text_features = model.encode_text(text_inputs)
 
@@ -63,6 +84,7 @@ def evaluate_clip_model_accuracy_amp(model, dataloader, text_inputs):
 
     accuracy = 100 * correct / total
     return accuracy
+
 
 # Function for parameter sensitivity analysis
 def parameter_sensitivity_analysis(model, dataloader, text_inputs, perturbation_std=0.1):
