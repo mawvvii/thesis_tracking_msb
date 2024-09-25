@@ -30,7 +30,13 @@ class_names = [
 ]
 
 # Tokenize the class names (text inputs for the CLIP model)
-text_inputs = tokenizer(class_names)
+text_inputs = [tokenizer.encode(class_name) for class_name in class_names]
+
+# Convert tokenized inputs into a PyTorch tensor and move to 'cuda'
+text_inputs = torch.tensor(text_inputs).to('cuda')
+
+# Debugging: Check dtype of tokenized text inputs
+print(f"Tokenized text inputs dtype: {text_inputs.dtype}")
 
 # Move model and tokenized text inputs to CUDA
 model = model.to('cuda')
@@ -182,40 +188,113 @@ def load_sensitivity_scores(filepath):
     return sensitivity_scores
 
 # Example usage for sensitivity analysis
-sensitivity_scores = parameter_sensitivity_analysis_amp(model, test_loader, text_inputs, perturbation_std=0.1)
+# sensitivity_scores = parameter_sensitivity_analysis_amp(model, test_loader, text_inputs, perturbation_std=0.1)
 
-# Function to convert all parameters of selected layers to float16
-def convert_layers_below_threshold_to_float16(model, sensitivity_scores, threshold):
-    with torch.no_grad():  # No need to compute gradients for this operation
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+
+class MixedPrecisionAttention(nn.MultiheadAttention):
+    def forward(self, query, key, value, *args, **kwargs):
+        # Ensure inputs are converted to float16 if weights are in float16
+        if self.in_proj_weight.dtype == torch.float16:
+            query = query.half()
+            key = key.half()
+            value = value.half()
+
+        return super(MixedPrecisionAttention, self).forward(query, key, value, *args, **kwargs)
+
+
+# Custom LayerNorm to ensure input and parameters are in float16
+class MixedPrecisionLayerNorm(nn.LayerNorm):
+    def forward(self, input):
+        # Ensure the input is in float16 if necessary
+        if input.dtype == torch.float32:
+            input = input.half()
+
+        # Ensure that the weight and bias are in float16 as well
+        if self.weight.dtype == torch.float32:
+            self.weight = torch.nn.Parameter(self.weight.half())  # Convert weights to float16
+        if self.bias.dtype == torch.float32:
+            self.bias = torch.nn.Parameter(self.bias.half())  # Convert bias to float16
+
+        # Ensure parameters are on the same device as input
+        if self.weight.device != input.device:
+            self.weight = torch.nn.Parameter(self.weight.to(input.device))
+            self.bias = torch.nn.Parameter(self.bias.to(input.device))
+
+        return super(MixedPrecisionLayerNorm, self).forward(input)
+
+
+def convert_layers_below_threshold_to_float16(model, sensitivity_scores, threshold=10):
+    with torch.no_grad():  # Disable gradients during conversion
         for layer_name, sensitivity in sensitivity_scores.items():
-            if sensitivity < threshold:  # Check if sensitivity is below threshold
-                log_and_print(f"Converting {layer_name} to float16 due to low sensitivity score of {sensitivity:.2f}")
+            if sensitivity < threshold:
+                print(f"Converting all parameters in {layer_name} to float16 due to low sensitivity score of {sensitivity:.2f}")
                 
-                # Convert the weight and bias of this layer to float16
-                layer = dict(model.named_parameters())[layer_name]
-                layer.data = layer.data.half()  # Convert weights to float16
-                
-                # Convert other associated parameters if they exist
-                # e.g., BatchNorm layers have additional parameters like bias, running_mean, and running_var
+                # Split layer_name to navigate through the module hierarchy
                 layer_name_parts = layer_name.split('.')
-                if len(layer_name_parts) > 1:
-                    # Navigate to the module using the name parts
-                    sub_module = model
-                    for part in layer_name_parts[:-1]:  # Skip the last part to reach the module
-                        sub_module = getattr(sub_module, part)
-                    
-                    if isinstance(sub_module, torch.nn.BatchNorm2d):
-                        sub_module.bias.data = sub_module.bias.data.half()
-                        sub_module.running_mean.data = sub_module.running_mean.data.half()
-                        sub_module.running_var.data = sub_module.running_var.data.half()
+                sub_module = model
+                for part in layer_name_parts[:-1]:  # Traverse the layers
+                    sub_module = getattr(sub_module, part)
+
+                # Convert all relevant parameters to float16
+                # Loop through all parameters of this sub_module
+                for param_name, param in sub_module.named_parameters(recurse=False):
+                    print(f"Converting {layer_name}.{param_name} to float16")
+                    param.data = param.data.half()
+
+                # If sub_module has buffers (like running_mean in BatchNorm), convert them as well
+                for buffer_name, buffer in sub_module.named_buffers(recurse=False):
+                    print(f"Converting {layer_name}.{buffer_name} to float16")
+                    buffer.data = buffer.data.half()
+
+
+import torch
+from torch.amp import autocast
+
+def evaluate_model_accuracy_mixed_precision(model, dataloader, text_inputs):
+    model.eval()
+    correct = 0
+    total = 0
+
+    with torch.no_grad():
+        # Ensure text inputs are in full precision after encoding
+        text_features = model.encode_text(text_inputs)
+        
+        # Debugging: Check dtype of text features after encoding
+        print(f"Text features dtype after encoding: {text_features.dtype}")
+        
+        # Ensure the text features are in float32 for compatibility with mixed precision
+        if text_features.dtype == torch.float16:
+            text_features = text_features.float()
+
+        for inputs, labels in dataloader:
+            inputs, labels = inputs.to('cuda'), labels.to('cuda')
+
+            # Use autocast for mixed precision during image encoding and other operations
+            with autocast():
+                # Image encoding in mixed precision
+                image_features = model.encode_image(inputs)
+
+                # Convert image features to float32 for compatibility with text features
+                image_features = image_features.float()
+
+                # Compute similarity in float32
+                similarity = (image_features @ text_features.T).softmax(dim=-1)
+
+            predicted = similarity.argmax(dim=1)
+            total += labels.size(0)
+            correct += (predicted == labels).sum().item()
+
+    accuracy = 100 * correct / total
+    return accuracy
+
 
 # Example usage:
 # After saving the sensitivity scores, you can later load and use them:
 sensitivity_scores = load_sensitivity_scores("sensitivity_scores.json")
 # Convert layers with sensitivity scores below the threshold to float16
-threshold = 10  # Define threshold for sensitivity
-convert_layers_below_threshold_to_float16(model, sensitivity_scores, threshold)
-
-# Re-evaluate the model performance using the updated function that handles mixed precision
-new_accuracy = evaluate_clip_model_accuracy_mixed_precision(model, test_loader)
-log_and_print(f"New Accuracy after converting some layers to float16: {new_accuracy:.2f}%")
+# Example usage
+convert_layers_below_threshold_to_float16(model, sensitivity_scores, threshold=10)
