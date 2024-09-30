@@ -9,10 +9,21 @@ import torch
 from torch.amp import autocast
 import torch.nn.functional as F
 
+import torch
+from torch.amp import autocast
+import torch.nn.functional as F
+
 def evaluate_mixed_precision_model(model, data_loader, tokenizer, labels):
     model.eval()  # Set the model to evaluation mode
     correct_predictions = 0
     total_samples = 0
+
+    # Track initial memory usage
+    initial_memory_allocated = torch.cuda.memory_allocated()
+    initial_memory_reserved = torch.cuda.memory_reserved()
+    
+    log_and_print(f"Initial memory allocated: {initial_memory_allocated / (1024 ** 2):.2f} MB")
+    log_and_print(f"Initial memory reserved: {initial_memory_reserved / (1024 ** 2):.2f} MB")
     
     with torch.no_grad():
         # Tokenize all the possible labels beforehand
@@ -41,12 +52,23 @@ def evaluate_mixed_precision_model(model, data_loader, tokenizer, labels):
             # Calculate accuracy
             correct_predictions += torch.sum(predictions == labels_batch).item()
             total_samples += labels_batch.size(0)
+
+    # Track memory usage after inference
+    final_memory_allocated = torch.cuda.memory_allocated()
+    final_memory_reserved = torch.cuda.memory_reserved()
+
+    # Calculate and log the memory usage difference
+    memory_allocated = (final_memory_allocated - initial_memory_allocated) / (1024 ** 2)  # Convert to MB
+    memory_reserved = (final_memory_reserved - initial_memory_reserved) / (1024 ** 2)  # Convert to MB
+    log_and_print(f"Memory allocated during inference: {memory_allocated:.2f} MB")
+    log_and_print(f"Memory reserved during inference: {memory_reserved:.2f} MB")
     
     # Final accuracy
     accuracy = correct_predictions / total_samples
     log_and_print(f"Mixed precision accuracy: {accuracy * 100:.2f}%")
-    return accuracy
-
+    
+    # Return accuracy and memory usage
+    return accuracy, memory_allocated, memory_reserved
 
 # Set up logging to both console and file
 logging.basicConfig(
