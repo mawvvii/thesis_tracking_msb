@@ -102,31 +102,9 @@ def tokenize_labels(labels):
     return [tokenizer(f"A photo of a {label}.").to('cuda') for label in labels]
 
 
-
-# # Tokenize the prompts
-# text_inputs = tokenizer(prompts).to('cuda')
-# log_and_print(f"Text inputs tokenized and moved to CUDA. Shape: {text_inputs.shape}")
-
 # Clear GPU cache
 log_and_print("Clearing GPU cache...")
 torch.cuda.empty_cache()
-
-# # Update the transformation to include normalization
-# transform = transforms.Compose([
-#     transforms.Resize((224, 224)),
-#     transforms.ToTensor(),
-#     transforms.Normalize(mean=(0.48145466, 0.4578275, 0.40821073),
-#                          std=(0.26862954, 0.26130258, 0.27577711)),
-# ])
-# log_and_print("Image transformations set.")
-
-# # Load CIFAR-10 test data with updated transformation
-# test_dataset = datasets.CIFAR10(root='./data', train=False, download=True, transform=transform)
-# log_and_print(f"Test dataset loaded. Number of samples: {len(test_dataset)}")
-
-# # Create a DataLoader for the test dataset
-# test_loader = DataLoader(test_dataset, batch_size=32, shuffle=False, num_workers=4)
-# log_and_print("DataLoader created.")
 
 # Inspect the model's parameters to check for biases
 for name, param in model.named_parameters():
@@ -134,61 +112,6 @@ for name, param in model.named_parameters():
         print(f"Bias found: {name}, Shape: {param.shape}")
     else:
         print(f"Weight found: {name}, Shape: {param.shape}")
-
-# def evaluate_model_accuracy_mixed_precision(model, dataloader, text_inputs):
-#     log_and_print("Starting model evaluation with mixed precision...")
-#     model.eval()
-#     correct = 0
-#     total = 0
-
-#     with torch.no_grad():
-#         # Check that text_inputs is in int64 as required for token embedding
-#         log_and_print(f"text_inputs dtype before any changes: {text_inputs.dtype}")
-#         if text_inputs.dtype != torch.int64:
-#             log_and_print(f"Converting text_inputs to int64...")
-#             text_inputs = text_inputs.long()
-        
-#         # Move text_inputs to CUDA, but ensure it remains in int64
-#         text_inputs = text_inputs.to('cuda')
-#         log_and_print(f"text_inputs moved to CUDA. dtype: {text_inputs.dtype}")
-
-#         # Disable autocast here to prevent any issues with int64 inputs during encoding
-#         with torch.amp.autocast(device_type='cuda', enabled=False):
-#             log_and_print("Calling model.encode_text()...")
-#             text_features = model.encode_text(text_inputs)
-#             text_features = text_features / text_features.norm(dim=-1, keepdim=True)
-#             log_and_print(f"Text features encoded. Shape: {text_features.shape}, Dtype: {text_features.dtype}")
-
-#         # Proceed with evaluation for image inputs
-#         for batch_idx, (inputs, labels) in enumerate(dataloader):
-#             log_and_print(f"Processing batch {batch_idx + 1}/{len(dataloader)}...")
-
-#             # Move inputs and labels to CUDA
-#             inputs, labels = inputs.to('cuda'), labels.to('cuda')
-
-#             with torch.amp.autocast(device_type='cuda'):
-#                 log_and_print("Encoding image inputs with mixed precision...")
-#                 image_features = model.encode_image(inputs)
-#                 image_features = image_features / image_features.norm(dim=-1, keepdim=True)
-#                 log_and_print(f"Image features encoded. Shape: {image_features.shape}, Dtype: {image_features.dtype}")
-
-#             # Compute similarity
-#             similarity = (image_features @ text_features.T)
-#             probabilities = similarity.softmax(dim=-1)
-#             log_and_print(f"Similarity computed. Shape: {similarity.shape}")
-
-#             # Get the predicted class and calculate batch accuracy
-#             predicted = probabilities.argmax(dim=1)
-#             total += labels.size(0)
-#             batch_correct = (predicted == labels).sum().item()
-#             correct += batch_correct
-#             batch_accuracy = 100 * batch_correct / labels.size(0)
-#             log_and_print(f"Batch {batch_idx + 1} accuracy: {batch_accuracy:.2f}%")
-
-#     accuracy = 100 * correct / total
-#     log_and_print(f"Final accuracy: {accuracy:.2f}%")
-#     return accuracy
-
 
 
 def load_sensitivity_scores(filepath):
@@ -262,9 +185,6 @@ def convert_parameters_below_threshold_to_float16(model, sensitivity_scores, thr
 
     log_and_print(f"Parameter conversion complete. Total parameters converted: {converted_params}")
 
-
-
-
 def revert_text_encoder_layer_norms_to_float32(model):
     log_and_print("Reverting text encoder layer norms to float32...")
     for name, param in model.named_parameters():
@@ -310,67 +230,8 @@ list_model_parameters(model, "before")
 # Convert parameters with sensitivity scores below the threshold to float16
 convert_parameters_below_threshold_to_float16(model, sensitivity_scores, threshold=10)
 
-# # Revert text encoder layer norms to float32
-# revert_text_encoder_layer_norms_to_float32(model)
-
 # List model parameters after conversion
 list_model_parameters(model, "after")
-
-# # Verify data types of layer norms
-# verify_text_encoder_layer_norms_dtype(model)
-
-# import torch
-# from torch.cuda.amp import autocast
-
-# def evaluate_model_accuracy_amp(model, text_inputs, test_loader):
-#     model.eval()  # Set the model to evaluation mode
-#     correct = 0
-#     total = 0
-#     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
-#     with torch.no_grad():
-#         for batch_idx, (inputs, labels) in enumerate(test_loader):
-#             log_and_print(f"Processing batch {batch_idx + 1}/{len(test_loader)}...")
-#             log_and_print(f"Input shape: {inputs.shape}, Labels shape: {labels.shape}")
-
-#             # Move inputs and labels to CUDA
-#             inputs, labels = inputs.to(device), labels.to(device)
-#             log_and_print(f"Moved inputs and labels to {device}")
-
-#             # Perform inference with autocasting
-#             with torch.amp.autocast(device_type='cuda'):
-#                 outputs = model(inputs, text_inputs)
-#                 log_and_print(f"Model outputs: {outputs}")  # Log all model outputs
-
-#                 # Check the number of outputs from the model
-#                 if isinstance(outputs, tuple):
-#                     log_and_print(f"Model returned {len(outputs)} outputs.")
-#                 else:
-#                     log_and_print("Model returned a single output.")
-
-#             # Adjust here based on the actual number of outputs from the model
-#             logits_per_image = outputs[0]  # Assuming the first output is the image logits
-#             log_and_print(f"Logits per image shape: {logits_per_image.shape}")
-
-#             # Apply softmax to the logits and find the predicted class
-#             outputs = F.softmax(logits_per_image, dim=1)
-#             log_and_print(f"Softmax outputs: {outputs[:5]}")  # Log first 5 outputs for inspection
-
-#             # Get the predicted class by finding the index of the maximum value
-#             _, predicted = torch.max(outputs, dim=1)
-#             log_and_print(f"Predicted classes: {predicted[:5]}")
-
-#             # Count the number of correct predictions
-#             correct_predictions = (predicted == labels).sum().item()
-#             correct += correct_predictions
-#             total += labels.size(0)
-
-#             log_and_print(f"Batch {batch_idx + 1}: {correct_predictions}/{labels.size(0)} correct predictions")
-        
-#     accuracy = correct / total if total > 0 else 0
-#     log_and_print(f"Total correct: {correct}/{total}, Accuracy: {accuracy * 100:.2f}%")
-
-#     return accuracy
 
 log_and_print("Model and tokenizer loaded successfully.")
 log_and_print("Starting evaluation with mixed precision...")
