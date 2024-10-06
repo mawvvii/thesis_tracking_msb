@@ -1,23 +1,23 @@
-Accuracy: 83.93%
-Accuracy Metrics: 83.93%
-Precision: 86.94%
-Recall: 83.93%
-F1-score: 83.79%
-Mean IoU (mIoU): 0.7316
-Memory allocated: 4.70 MB
-Memory reserved: 1702.00 MB
-Initial_memory_allocated: 3899960832.00 MB
-Initial_memory_reserved: 4018143232.00 MB
-Final_memory_allocated: 3904893952.00 MB
-Final_memory_reserved: 5802819584.00 MB
+Accuracy: 84.18%
+Accuracy Metrics: 84.18%
+Precision: 86.89%
+Recall: 84.18%
+F1-score: 84.04%
+Mean IoU (mIoU): 0.7346
+Memory allocated: 12.83 MB
+Memory reserved: 1622.00 MB
+Initial_memory_allocated: 3889211904.00 MB
+Initial_memory_reserved: 4013948928.00 MB
+Final_memory_allocated: 3902664704.00 MB
+Final_memory_reserved: 5714739200.00 MB
 IoU per class:
-Class 'plane': IoU = 0.8378
-Class 'car': IoU = 0.8937
-Class 'bird': IoU = 0.6127
-Class 'cat': IoU = 0.5739
-Class 'deer': IoU = 0.7753
-Class 'dog': IoU = 0.6160
-Class 'frog': IoU = 0.5144
-Class 'horse': IoU = 0.7402
-Class 'ship': IoU = 0.8787
-Class 'truck': IoU = 0.8738
+Class 'plane': IoU = 0.8298
+Class 'car': IoU = 0.8954
+Class 'bird': IoU = 0.6100
+Class 'cat': IoU = 0.5843
+Class 'deer': IoU = 0.7625
+Class 'dog': IoU = 0.6302
+Class 'frog': IoU = 0.5258
+Class 'horse': IoU = 0.7529
+Class 'ship': IoU = 0.8826
+Class 'truck': IoU = 0.8728
