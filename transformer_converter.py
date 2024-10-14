@@ -15,6 +15,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+import csv
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 
 # Define class names for CIFAR-10
@@ -44,6 +45,16 @@ def save_metrics_to_file(result_metrics, file_path):
         for idx, iou in enumerate(result_metrics['iou_list']):
             f.write(f"Class '{class_names[idx]}': IoU = {iou:.4f}\n")
         
+def save_metrics_to_file_simple(result_metrics, file_path):
+    with open(file_path, 'w') as f:
+        # Write the metrics to the file
+        f.write(f"Accuracy: {result_metrics['accuracy'] * 100:.2f}%\n")
+        f.write(f"Memory allocated: {result_metrics['memory_allocated']:.2f} MB\n")
+        f.write(f"Memory reserved: {result_metrics['memory_reserved']:.2f} MB\n")
+        f.write(f"Initial_memory_allocated: {result_metrics['Initial_memory_allocated']:.2f} MB\n")
+        f.write(f"Initial_memory_reserved: {result_metrics['Initial_memory_reserved']:.2f} MB\n")
+        f.write(f"Final_memory_allocated: {result_metrics['Final_memory_allocated']:.2f} MB\n")
+        f.write(f"Final_memory_reserved: {result_metrics['Final_memory_reserved']:.2f} MB\n")
 
 def evaluate(model, data_loader, tokenizer, labels, class_names):
     model.eval()  # Set the model to evaluation mode
@@ -252,7 +263,16 @@ def evaluate_mixed_precision_model(model, data_loader, tokenizer, labels):
     log_and_print(f"Mixed precision accuracy: {accuracy * 100:.2f}%")
     
     # Return accuracy and memory usage
-    return accuracy, memory_allocated, memory_reserved
+    return {
+        "accuracy": accuracy,
+        "memory_allocated": memory_allocated,
+        "memory_reserved": memory_reserved,
+        "Initial_memory_allocated":initial_memory_allocated,
+        "Initial_memory_reserved":initial_memory_reserved,
+        "Final_memory_allocated":final_memory_allocated,
+        "Final_memory_reserved":final_memory_reserved,
+        }
+    
 
 # Set up logging to both console and file
 logging.basicConfig(
@@ -275,8 +295,8 @@ model, _, _ = open_clip.create_model_and_transforms(
     device='cuda'
 )
 tokenizer = open_clip.get_tokenizer('hf-hub:laion/CLIP-ViT-H-14-laion2B-s32B-b79K')
-log_and_print("Model and tokenizer loaded successfully.")
 
+log_and_print("Model and tokenizer loaded successfully.")
 # Example for loading a dataset, e.g., CIFAR-10 for image classification
 from torchvision import datasets, transforms
 from torch.utils.data import DataLoader
@@ -295,7 +315,6 @@ log_and_print("Dataset loaded successfully.")
 def preprocess_batch(batch):
     images, labels = batch
     return images.to('cuda', dtype=torch.float16), labels.to('cuda')
-
 
 def tokenize_text(text):
     # Tokenize the text prompt
@@ -428,44 +447,197 @@ log_and_print("Starting evaluation before float 16 ")
 # evaluate_mixed_precision_model(model, data_loader, tokenizer, labels)
 # log_and_print("Evaluation completed.")
 
-# Example usage after model evaluation
-result_metrics = evaluate(model, data_loader, tokenizer, labels, class_names)
+# # Example usage after model evaluation
+# result_metrics = evaluate(model, data_loader, tokenizer, labels, class_names)
 
-# Save the results to an Excel file
-save_results_to_excel(result_metrics, class_names, 'before_conversion_evaluation_results.xlsx')
+# # Save the results to an Excel file
+# save_results_to_excel(result_metrics, class_names, 'before_conversion_evaluation_results.xlsx')
 
-# # Save the results to a text file
-save_metrics_to_file(result_metrics, 'before_conversion_evaluation_results.txt')
+# # # Save the results to a text file
+# save_metrics_to_file(result_metrics, 'before_conversion_evaluation_results.txt')
 
-# Optional: print a confirmation message
-print("before_conversion_evaluation_results.xlsx")
+# # Optional: print a confirmation message
+# print("before_conversion_evaluation_results.xlsx")
 
 # # List model parameters before conversion
 # list_model_parameters(model, "before")
 
-# Convert parameters with sensitivity scores below the threshold to float16
-convert_parameters_below_threshold_to_float16(model, sensitivity_scores, threshold=10)
+# def flip_exponent_msb_float16(weight):
+#     # Convert the float16 weight to its binary (16-bit) representation
+#     weight_as_int = np.float16(weight).view(np.int16)
+    
+#     # Define a mask to isolate and flip the MSB of the exponent (bit 14 in float16)
+#     exponent_msb_mask = 0x4000  # This corresponds to bit 14
+
+#     # Flip the MSB of the exponent by XORing with the mask
+#     modified_weight_as_int = weight_as_int ^ exponent_msb_mask
+
+#     # Convert the modified integer representation back to float16
+#     modified_weight = np.int16(modified_weight_as_int).view(np.float16)
+    
+#     return modified_weight
+
+# def model_weight_evaluation(model):
+#     for name, param in model.named_parameters():
+#         if 'weight' in name:  # If you only want to list weights
+#             print(f"Layer: {name}, Weights: {param.dtype}")
+#             weight = flip_exponent_msb_float16(param.data)
+#             log_and_print(f"Layer: {name}, Weights: {param.data}, flipped {weight}")
+            
+threshold = 10 
+
+# # Convert parameters with sensitivity scores below the threshold to float16
+convert_parameters_below_threshold_to_float16(model, sensitivity_scores, threshold)
+
+# model.half()
 
 # List model parameters after conversion
 list_model_parameters(model, "after")
 
-# log_and_print("Model and tokenizer loaded successfully.")
-# log_and_print("Starting evaluation with mixed precision...")
-# evaluate_mixed_precision_model(model, data_loader, tokenizer, labels)
-# log_and_print("Evaluation completed.")
+def flip_lsb_exponent(weight, dtype):
+    """
+    Function to flip the LSB of the exponent of a weight in either float32 or float16.
+    """
+    if dtype == torch.float32:
+        # Convert the float32 weight to its binary (32-bit) representation
+        weight_as_int = np.float32(weight).view(np.int32)
+        
+        # Define a mask to isolate and flip the LSB of the exponent (bit 23 in float32)
+        exponent_lsb_mask = 0x00800000  # This corresponds to bit 23 for float32 (LSB of the exponent)
+        
+        # Flip the LSB of the exponent by XORing with the mask
+        modified_weight_as_int = weight_as_int ^ exponent_lsb_mask
 
-# Free up memory before starting evaluation
+        # Convert the modified integer representation back to float32
+        modified_weight = np.int32(modified_weight_as_int).view(np.float32)
+        
+    elif dtype == torch.float16:
+        # Convert the float16 weight to its binary (16-bit) representation
+        weight_as_int = np.float16(weight).view(np.int16)
+        
+        # Define a mask to isolate and flip the LSB of the exponent (bit 10 in float16)
+        exponent_lsb_mask = 0x0400  # This corresponds to bit 10 for float16
+
+        # Flip the LSB of the exponent by XORing with the mask
+        modified_weight_as_int = weight_as_int ^ exponent_lsb_mask
+
+        # Convert the modified integer representation back to float16
+        modified_weight = np.int16(modified_weight_as_int).view(np.float16)
+
+    return modified_weight
+
+def flip_msb_exponent(weight, dtype):
+    """
+    Function to flip the MSB of the exponent of a weight in either float32 or float16.
+    """
+    if dtype == torch.float32:
+        # Convert the float32 weight to its binary (32-bit) representation
+        weight_as_int = np.float32(weight).view(np.int32)
+        
+        # Define a mask to isolate and flip the MSB of the exponent (bit 30 in float32)
+        exponent_msb_mask = 0x40000000  # This corresponds to bit 30 for float32 (MSB of the exponent)
+        
+        # Flip the MSB of the exponent by XORing with the mask
+        modified_weight_as_int = weight_as_int ^ exponent_msb_mask
+
+        # Convert the modified integer representation back to float32
+        modified_weight = np.int32(modified_weight_as_int).view(np.float32)
+        
+    elif dtype == torch.float16:
+        # Convert the float16 weight to its binary (16-bit) representation
+        weight_as_int = np.float16(weight).view(np.int16)
+        
+        # Define a mask to isolate and flip the MSB of the exponent (bit 14 in float16)
+        exponent_msb_mask = 0x4000  # This corresponds to bit 14 for float16
+
+        # Flip the MSB of the exponent by XORing with the mask
+        modified_weight_as_int = weight_as_int ^ exponent_msb_mask
+
+        # Convert the modified integer representation back to float16
+        modified_weight = np.int16(modified_weight_as_int).view(np.float16)
+
+    return modified_weight
+
+def inject_error_with_probability_and_log(model, data_loader, tokenizer, labels, flip_probability=0.5, log_file='evaluation_log.csv'):
+    """
+    Function to inject MSB errors into the model's weights based on a given probability,
+    evaluate the model, and save the results including original and modified weights into a CSV file.
+    """
+    counter = 0
+    with open(log_file, mode='w', newline='') as file:
+        writer = csv.writer(file)
+        # Write the header for the CSV file
+        writer.writerow(['Layer Name', 'Weight Index', 'Original Weight', 'Modified Weight', 'Accuracy',
+                         'Memory Allocated', 'Memory Reserved', 'Initial Memory Allocated', 'Initial Memory Reserved',
+                         'Final Memory Allocated', 'Final Memory Reserved'])
+
+        for name, param in model.named_parameters():
+            log_and_print(f"Changing layer {name}")
+            if 'weight' in name:  # Only focus on weight tensors
+                dtype = param.dtype
+                log_and_print(f"Changing weights {name}")
+                # Detach the tensor from the graph and clone to avoid inplace modification issues
+                param_flat = param.detach().clone().view(-1)  
+                num_weights = param_flat.numel()
+  
+                # Flip the MSB for all weights in this layer
+                original_values = param_flat.clone()
+                  
+                for i in range(num_weights):
+                    original_value = param_flat[i].item()
+                    modified_value = flip_lsb_exponent(original_value, dtype)
+                    param_flat[i] = torch.tensor(modified_value, dtype=dtype)
+
+                # Inject the modified weights and evaluate the model
+                with torch.no_grad():
+                    param.data.copy_(param_flat.view(param.shape))  # Update the whole layer with modified values
+
+                # Evaluate the model and get the metrics
+                eval_metrics = evaluate_mixed_precision_model(model, data_loader, tokenizer, labels)
+                log_and_print(f"evaluation {eval_metrics} ")
+                # Log the result to the CSV file
+                counter = counter + 1
+                log_and_print(f"Counter for layer {counter} ")
+                log_and_print(f"Original {original_values[i].item()} Changed {param_flat[i].item()} layer {name}")
+                for i in range(num_weights):
+                    writer.writerow([
+                        name, i, original_values[i].item(), param_flat[i].item(), eval_metrics["accuracy"],
+                        eval_metrics["memory_allocated"], eval_metrics["memory_reserved"],
+                        eval_metrics["Initial_memory_allocated"], eval_metrics["Initial_memory_reserved"],
+                        eval_metrics["Final_memory_allocated"], eval_metrics["Final_memory_reserved"]
+                    ])
+
+                # Restore the original weights
+                with torch.no_grad():
+                    param.data.copy_(original_values.view(param.shape))  # Restore the original weights
+
+# # # Free up memory before starting evaluation
 torch.cuda.empty_cache()
 gc.collect()
 
-# Example usage after model evaluation
-result_metrics = evaluate(model, data_loader, tokenizer, labels, class_names)
+inject_error_with_probability_and_log(model, data_loader, tokenizer, labels, flip_probability=1, log_file='evaluation_log.csv')
 
-# Save the results to an Excel file
-save_results_to_excel(result_metrics, class_names, 'evaluation_results.xlsx')
+print(f"Results saved to 'evaluation_log.csv'")
 
+# model_weight_evaluation(model)
+
+# # log_and_print("Model and tokenizer loaded successfully.")
+# # log_and_print("Starting evaluation with mixed precision...")
+# result = evaluate_mixed_precision_model(model, data_loader, tokenizer, labels)
+# log_and_print("Evaluation completed.")
+
+
+# # Example usage after model evaluation
+# result_metrics = evaluate(model, data_loader, tokenizer, labels, class_names)
+
+# # Save the results to an Excel file
+# save_results_to_excel(result_metrics, class_names, f'evaluation_results {threshold}.xlsx')
+
+# # # Save the results to a text file
+# save_metrics_to_file_simple(result, f'evaluation_results simple {threshold}.txt')
 # # Save the results to a text file
-save_metrics_to_file(result_metrics, 'evaluation_results.txt')
+# save_metrics_to_file(result_metrics, f'evaluation_results {threshold}.txt')
+# save_metrics_to_file_simple(result, f'evaluation_results simple {threshold}.txt')
 
-# Optional: print a confirmation message
-print("evaluation_results.xlsx")
+# # Optional: print a confirmation message
+# print(f"evaluation_results {threshold}.xlsx")

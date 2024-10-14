@@ -86,7 +86,6 @@ import torch
 from torch.cuda.amp import autocast
 
 # Updated function with AMP for efficient evaluation
-# Updated function with AMP for efficient evaluation
 def evaluate_clip_model_accuracy_mixed_precision(model, dataloader, text_inputs):
     model.eval()
     correct = 0
@@ -204,7 +203,6 @@ class MixedPrecisionAttention(nn.MultiheadAttention):
             value = value.half()
 
         return super(MixedPrecisionAttention, self).forward(query, key, value, *args, **kwargs)
-
 
 # Custom LayerNorm to ensure input and parameters are in float16
 class MixedPrecisionLayerNorm(nn.LayerNorm):

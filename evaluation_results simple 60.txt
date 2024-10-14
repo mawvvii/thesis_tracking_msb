@@ -1,0 +1,7 @@
+Accuracy: 83.95%
+Memory allocated: 13.73 MB
+Memory reserved: 2.00 MB
+Initial_memory_allocated: 2790695936.00 MB
+Initial_memory_reserved: 4192206848.00 MB
+Final_memory_allocated: 2805097984.00 MB
+Final_memory_reserved: 4194304000.00 MB

@@ -111,3 +111,6 @@ CIFAR10_50percent/cifar-10-python.tar.gz
 CIFAR10_modified100/cifar-10-python.tar.gz
 data/CIFAR10/cifar-10-python.tar.gz
 data/cifar-10-python.tar.gz
+
+
+*.xlsx

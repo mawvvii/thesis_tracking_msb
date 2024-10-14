@@ -1,0 +1,23 @@
+Accuracy: 83.95%
+Accuracy Metrics: 83.95%
+Precision: 86.96%
+Recall: 83.95%
+F1-score: 83.81%
+Mean IoU (mIoU): 0.7319
+Memory allocated: 12.83 MB
+Memory reserved: 1058.00 MB
+Initial_memory_allocated: 2790695936.00 MB
+Initial_memory_reserved: 2917138432.00 MB
+Final_memory_allocated: 2804148736.00 MB
+Final_memory_reserved: 4026531840.00 MB
+IoU per class:
+Class 'plane': IoU = 0.8378
+Class 'car': IoU = 0.8928
+Class 'bird': IoU = 0.6136
+Class 'cat': IoU = 0.5741
+Class 'deer': IoU = 0.7755
+Class 'dog': IoU = 0.6160
+Class 'frog': IoU = 0.5144
+Class 'horse': IoU = 0.7408
+Class 'ship': IoU = 0.8805
+Class 'truck': IoU = 0.8738
