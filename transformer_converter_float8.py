@@ -44,7 +44,6 @@ def save_metrics_to_file(result_metrics, file_path):
         for idx, iou in enumerate(result_metrics['iou_list']):
             f.write(f"Class '{class_names[idx]}': IoU = {iou:.4f}\n")
         
-
 def evaluate(model, data_loader, tokenizer, labels, class_names):
     model.eval()  # Set the model to evaluation mode
     correct_predictions = 0
@@ -311,12 +310,12 @@ def tokenize_labels(labels):
 log_and_print("Clearing GPU cache...")
 torch.cuda.empty_cache()
 
-# Inspect the model's parameters to check for biases
-for name, param in model.named_parameters():
-    if 'bias' in name:
-        print(f"Bias found: {name}, Shape: {param.shape}")
-    else:
-        print(f"Weight found: {name}, Shape: {param.shape}")
+# # Inspect the model's parameters to check for biases
+# for name, param in model.named_parameters():
+#     if 'bias' in name:
+#         print(f"Bias found: {name}, Shape: {param.shape}")
+#     else:
+#         print(f"Weight found: {name}, Shape: {param.shape}")
 
 def load_sensitivity_scores(filepath):
     """Function to load previously saved sensitivity scores from a JSON file."""
@@ -331,14 +330,8 @@ def load_sensitivity_scores(filepath):
         sensitivity_scores = {}
     return sensitivity_scores
 
-def to_float8(tensor):
-    """Simulate conversion to float8 by reducing the precision manually."""
-    scale = 16  # Adjust this scale factor to simulate lower precision (similar to float8)
-    tensor_float8_simulated = torch.round(tensor * scale) / scale
-    return tensor_float8_simulated
-
-def convert_parameters_below_threshold_to_float16(model, sensitivity_scores, threshold):
-    log_and_print(f"Converting weights and corresponding biases with sensitivity scores below {threshold} to float16, skipping layers with 'ln'...")
+def convert_parameters_below_threshold_to_8bit(model, sensitivity_scores, threshold):
+    log_and_print(f"Converting weights and corresponding biases with sensitivity scores below {threshold} to float8, skipping layers with 'ln'...")
     converted_params = 0
 
     # Collect parameter names and normalize them
@@ -363,25 +356,16 @@ def convert_parameters_below_threshold_to_float16(model, sensitivity_scores, thr
         score = sensitivity_scores.get(sensitivity_key, None)
 
         if score is not None:
-            # # Skip layers containing 'ln'
-            # if 'ln' in param_name:
-            #     log_and_print(f"Skipping layer '{param_name}' due to 'ln' in the name")
-            #     continue
-            
             log_and_print(f"Parameter: '{param_name}', Sensitivity score: {score}")
             if score < threshold:
                 # Convert weight
+                # log_and_print(f"converting .. {param_name}")
                 if 'weight' in param_name:
+                    log_and_print(f"Converting weight: '{param_name}'")
                     weight_param = dict(model.named_parameters())[param_name]
-                    log_and_print(f"Converting weight check: '{param_name} for size {weight_param.dtype}")
-                    if weight_param.dtype == torch.float32:
-                        weight_param.data = weight_param.data.half() 
-                        log_and_print(f"Converted '{param_name}' to float16")
-                        converted_params += 1
-                    elif weight_param.dtype == torch.float16:
-                        log_and_print(f"Hit for weight 16")
-                        weight_param.data = to_float8(weight_param.data)
-                        log_and_print(f"Converted weight '{param_name}' to float8 {weight_param.dtype}")
+                    if weight_param.dtype == torch.float16:
+                        weight_param.data = weight_param.data.to(torch.float8_e5m2)
+                        log_and_print(f"Converted '{param_name}' to {weight_param.dtype}")
                         converted_params += 1
                     
                     # Now automatically convert the corresponding bias for this layer if it exists
@@ -389,13 +373,9 @@ def convert_parameters_below_threshold_to_float16(model, sensitivity_scores, thr
                     if bias_name in dict(model.named_parameters()):
                         bias_param = dict(model.named_parameters())[bias_name]
                         log_and_print(f"Found corresponding bias: '{bias_name}'")
-                        if bias_param.dtype == torch.float32:
-                            bias_param.data = bias_param.data.half()
-                            log_and_print(f"Converted bias '{bias_name}' to float16")
-                            converted_params += 1
-                        elif bias_param.dtype == torch.float16:
-                            bias_param.data = to_float8(bias_param.data)
-                            log_and_print(f"Converted bias '{bias_name}' to float8")
+                        if bias_param.dtype == torch.float16:
+                            bias_param.data = bias_param.data.to(torch.float8_e5m2)
+                            log_and_print(f"Converted bias '{bias_name}' to {bias_param.dtype}")
                             converted_params += 1
                         else:
                             log_and_print(f"Skipping bias '{bias_name}' as it is not float32")
@@ -404,36 +384,23 @@ def convert_parameters_below_threshold_to_float16(model, sensitivity_scores, thr
 
     log_and_print(f"Parameter conversion complete. Total parameters converted: {converted_params}")
 
-def revert_text_encoder_layer_norms_to_float32(model):
-    log_and_print("Reverting text encoder layer norms to float32...")
-    for name, param in model.named_parameters():
-        if 'text' in name and 'ln' in name:
-            if param.dtype == torch.float16:
-                log_and_print(f"Reverting '{name}' to float32")
-                param.data = param.data.float()
-    log_and_print("Reversion of layer norms complete.")
-
-def verify_text_encoder_layer_norms_dtype(model):
-    log_and_print("Verifying data types of text encoder layer norms...")
-    for name, param in model.named_parameters():
-        print(f"name{name}, Dtype: {param.dtype} ")
-        if 'text' in name and 'ln' in name:
-            log_and_print(f"Parameter: '{name}', Dtype: {param.dtype}")
-
 def list_model_parameters(model, description):
     """Function to list all parameters and their data types."""
     log_and_print(f"Listing model parameters {description} conversion:")
     total_params = 0
     float16_params = 0
+    float8_params = 0
     for name, param in model.named_parameters():
         total_params += 1
         dtype = param.dtype
         if dtype == torch.float16:
             float16_params += 1
-        log_and_print(f"Parameter: {name}, Dtype: {dtype}")
+        if dtype == torch.float8_e5m2:
+            float8_params += 1
+        # log_and_print(f"Parameter: {name}, Dtype: {dtype}")
     log_and_print(f"Total parameters: {total_params}")
     log_and_print(f"Parameters in float16: {float16_params}")
-    log_and_print(f"Parameters in float32: {total_params - float16_params}")
+    log_and_print(f"Parameters in float8: {float8_params}")
 
 # Load sensitivity scores
 sensitivity_scores = load_sensitivity_scores("sensitivity_scores.json")
@@ -443,26 +410,30 @@ log_and_print("Starting evaluation before float 16 ")
 # evaluate_mixed_precision_model(model, data_loader, tokenizer, labels)
 # log_and_print("Evaluation completed.")
 
-# # Example usage after model evaluation
-# result_metrics = evaluate(model, data_loader, tokenizer, labels, class_names)
+model.half()
+# List model parameters after conversion
+list_model_parameters(model, "before")
 
-# # Save the results to an Excel file
-# save_results_to_excel(result_metrics, class_names, 'before_conversion_evaluation_results.xlsx')
+# Example usage after model evaluation
+result_metrics = evaluate(model, data_loader, tokenizer, labels, class_names)
 
-# # # Save the results to a text file
-# save_metrics_to_file(result_metrics, 'before_conversion_evaluation_results.txt')
+# Save the results to an Excel file
+save_results_to_excel(result_metrics, class_names, 'before_conversion_evaluation_results_half.xlsx')
 
-# # Optional: print a confirmation message
-# print("before_conversion_evaluation_results.xlsx")
+# # Save the results to a text file
+save_metrics_to_file(result_metrics, 'before_conversion_evaluation_results_half.txt')
+
+# Optional: print a confirmation message
+print("before_conversion_evaluation_results_half.xlsx")
 
 # # List model parameters before conversion
 # list_model_parameters(model, "before")
 
 # Convert parameters with sensitivity scores below the threshold to float16
-convert_parameters_below_threshold_to_float16(model, sensitivity_scores, threshold=10)
+convert_parameters_below_threshold_to_8bit(model, sensitivity_scores, threshold=10)
 
-# Convert parameters with sensitivity scores below the threshold to float16
-convert_parameters_below_threshold_to_float16(model, sensitivity_scores, threshold=10)
+# List model parameters after conversion
+list_model_parameters(model, "after")
 
 # log_and_print("Model and tokenizer loaded successfully.")
 # log_and_print("Starting evaluation with mixed precision...")
@@ -477,13 +448,10 @@ gc.collect()
 result_metrics = evaluate(model, data_loader, tokenizer, labels, class_names)
 
 # Save the results to an Excel file
-save_results_to_excel(result_metrics, class_names, 'evaluation_results.xlsx')
+save_results_to_excel(result_metrics, class_names, 'evaluation_results_float8_e5m2.xlsx')
 
 # # Save the results to a text file
-save_metrics_to_file(result_metrics, 'evaluation_results.txt')
+save_metrics_to_file(result_metrics, 'evaluation_results__float8_e5m2.txt')
 
 # Optional: print a confirmation message
-print("evaluation_results.xlsx")
-
-# List model parameters after conversion
-list_model_parameters(model, "after")
+print("evaluation_results_float8_e5m2.xlsx")

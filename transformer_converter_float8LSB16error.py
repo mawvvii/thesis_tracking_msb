@@ -15,6 +15,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+import csv
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 
 # Define class names for CIFAR-10
@@ -44,7 +45,6 @@ def save_metrics_to_file(result_metrics, file_path):
         for idx, iou in enumerate(result_metrics['iou_list']):
             f.write(f"Class '{class_names[idx]}': IoU = {iou:.4f}\n")
         
-
 def evaluate(model, data_loader, tokenizer, labels, class_names):
     model.eval()  # Set the model to evaluation mode
     correct_predictions = 0
@@ -311,12 +311,12 @@ def tokenize_labels(labels):
 log_and_print("Clearing GPU cache...")
 torch.cuda.empty_cache()
 
-# Inspect the model's parameters to check for biases
-for name, param in model.named_parameters():
-    if 'bias' in name:
-        print(f"Bias found: {name}, Shape: {param.shape}")
-    else:
-        print(f"Weight found: {name}, Shape: {param.shape}")
+# # Inspect the model's parameters to check for biases
+# for name, param in model.named_parameters():
+#     if 'bias' in name:
+#         print(f"Bias found: {name}, Shape: {param.shape}")
+#     else:
+#         print(f"Weight found: {name}, Shape: {param.shape}")
 
 def load_sensitivity_scores(filepath):
     """Function to load previously saved sensitivity scores from a JSON file."""
@@ -332,69 +332,76 @@ def load_sensitivity_scores(filepath):
     return sensitivity_scores
 
 def convert_parameters_below_threshold_to_8bit(model, sensitivity_scores, threshold):
-    log_and_print(f"Converting weights and corresponding biases with sensitivity scores below {threshold} to 8-bit precision, skipping layers with 'ln'...")
+    log_and_print(f"Converting weights and corresponding biases with sensitivity scores below {threshold} to float8, skipping layers with 'ln'...")
     converted_params = 0
 
+    # Collect parameter names and normalize them
+    param_names = []
     for name, param in model.named_parameters():
-        score = sensitivity_scores.get(name, None)
-        if score is not None and score < threshold:
-            if 'weight' in name:
-                log_and_print(f"Converting weight: '{name}' to 8-bit precision")
-                # Extract the most significant 8 bits (MSB) from each 32-bit float
-                if param.dtype == torch.float32:
-                    param_data = param.data
-                    # Convert float32 to int32, shift right by 24 bits to keep the most significant 8 bits
-                    msb = (param_data.view(torch.int32) >> 24).to(torch.float32)
-                    param.data = msb  # Replace the original parameter with the 8-bit version
-                    log_and_print(f"Converted '{name}' to 8-bit precision")
-                    converted_params += 1
+        param_names.append(name)
+    normalized_param_names = [name.replace('.', '_').lower() for name in param_names]
+    normalized_to_original_param_names = {normalized_name: original_name for normalized_name, original_name in zip(normalized_param_names, param_names)}
 
-                # Now automatically convert the corresponding bias for this layer if it exists
-                bias_name = name.replace('weight', 'bias')
-                if bias_name in dict(model.named_parameters()):
-                    bias_param = dict(model.named_parameters())[bias_name]
-                    log_and_print(f"Found corresponding bias: '{bias_name}'")
-                    if bias_param.dtype == torch.float32:
-                        bias_data = bias_param.data
-                        msb_bias = (bias_data.view(torch.int32) >> 24).to(torch.float32)
-                        bias_param.data = msb_bias  # Replace bias with its 8-bit version
-                        log_and_print(f"Converted bias '{bias_name}' to 8-bit precision")
+    # Normalize sensitivity keys
+    sensitivity_keys = list(sensitivity_scores.keys())
+    normalized_sensitivity_keys = [key.replace('.', '_').lower() for key in sensitivity_keys]
+    normalized_to_original_sensitivity_keys = {normalized_key: original_key for normalized_key, original_key in zip(normalized_sensitivity_keys, sensitivity_keys)}
+
+    # Find matching names for conversion
+    matching_names = set(normalized_param_names) & set(normalized_sensitivity_keys)
+    logging.info(f"Number of matching parameter names: {len(matching_names)}")
+
+    for normalized_name in matching_names:
+        param_name = normalized_to_original_param_names[normalized_name]
+        sensitivity_key = normalized_to_original_sensitivity_keys[normalized_name]
+        score = sensitivity_scores.get(sensitivity_key, None)
+
+        if score is not None:
+            log_and_print(f"Parameter: '{param_name}', Sensitivity score: {score}")
+            if score < threshold:
+                # Convert weight
+                # log_and_print(f"converting .. {param_name}")
+                if 'weight' in param_name:
+                    log_and_print(f"Converting weight: '{param_name}'")
+                    weight_param = dict(model.named_parameters())[param_name]
+                    if weight_param.dtype == torch.float16:
+                        weight_param.data = weight_param.data.to(torch.float8_e5m2)
+                        log_and_print(f"Converted '{param_name}' to {weight_param.dtype}")
                         converted_params += 1
+                    
+                    # Now automatically convert the corresponding bias for this layer if it exists
+                    bias_name = param_name.replace('weight', 'bias')
+                    if bias_name in dict(model.named_parameters()):
+                        bias_param = dict(model.named_parameters())[bias_name]
+                        log_and_print(f"Found corresponding bias: '{bias_name}'")
+                        if bias_param.dtype == torch.float16:
+                            bias_param.data = bias_param.data.to(torch.float8_e5m2)
+                            log_and_print(f"Converted bias '{bias_name}' to {bias_param.dtype}")
+                            converted_params += 1
+                        else:
+                            log_and_print(f"Skipping bias '{bias_name}' as it is not float32")
+                    else:
+                        log_and_print(f"No bias found for '{param_name}'")
 
     log_and_print(f"Parameter conversion complete. Total parameters converted: {converted_params}")
-
-
-
-def revert_text_encoder_layer_norms_to_float32(model):
-    log_and_print("Reverting text encoder layer norms to float32...")
-    for name, param in model.named_parameters():
-        if 'text' in name and 'ln' in name:
-            if param.dtype == torch.float16:
-                log_and_print(f"Reverting '{name}' to float32")
-                param.data = param.data.float()
-    log_and_print("Reversion of layer norms complete.")
-
-def verify_text_encoder_layer_norms_dtype(model):
-    log_and_print("Verifying data types of text encoder layer norms...")
-    for name, param in model.named_parameters():
-        print(f"name{name}, Dtype: {param.dtype} ")
-        if 'text' in name and 'ln' in name:
-            log_and_print(f"Parameter: '{name}', Dtype: {param.dtype}")
 
 def list_model_parameters(model, description):
     """Function to list all parameters and their data types."""
     log_and_print(f"Listing model parameters {description} conversion:")
     total_params = 0
     float16_params = 0
+    float8_params = 0
     for name, param in model.named_parameters():
         total_params += 1
         dtype = param.dtype
         if dtype == torch.float16:
             float16_params += 1
+        if dtype == torch.float8_e5m2:
+            float8_params += 1
         # log_and_print(f"Parameter: {name}, Dtype: {dtype}")
     log_and_print(f"Total parameters: {total_params}")
     log_and_print(f"Parameters in float16: {float16_params}")
-    log_and_print(f"Parameters in float32: {total_params - float16_params}")
+    log_and_print(f"Parameters in float8: {float8_params}")
 
 # Load sensitivity scores
 sensitivity_scores = load_sensitivity_scores("sensitivity_scores.json")
@@ -404,44 +411,136 @@ log_and_print("Starting evaluation before float 16 ")
 # evaluate_mixed_precision_model(model, data_loader, tokenizer, labels)
 # log_and_print("Evaluation completed.")
 
-# Example usage after model evaluation
-result_metrics = evaluate(model, data_loader, tokenizer, labels, class_names)
-
-# Save the results to an Excel file
-save_results_to_excel(result_metrics, class_names, 'before_conversion_evaluation_results.xlsx')
-
-# # Save the results to a text file
-save_metrics_to_file(result_metrics, 'before_conversion_evaluation_results.txt')
-
-# Optional: print a confirmation message
-print("before_conversion_evaluation_results.xlsx")
-
-# # List model parameters before conversion
-# list_model_parameters(model, "before")
-
-# Convert parameters with sensitivity scores below the threshold to float16
-convert_parameters_below_threshold_to_8bit(model, sensitivity_scores, threshold=0)
-
-# List model parameters after conversion
-list_model_parameters(model, "after")
-
-# log_and_print("Model and tokenizer loaded successfully.")
-# log_and_print("Starting evaluation with mixed precision...")
-# evaluate_mixed_precision_model(model, data_loader, tokenizer, labels)
-# log_and_print("Evaluation completed.")
+model.half()
 
 # Free up memory before starting evaluation
 torch.cuda.empty_cache()
 gc.collect()
 
-# Example usage after model evaluation
-result_metrics = evaluate(model, data_loader, tokenizer, labels, class_names)
+# Convert parameters with sensitivity scores below the threshold to float16
+convert_parameters_below_threshold_to_8bit(model, sensitivity_scores, threshold=10)
 
-# Save the results to an Excel file
-save_results_to_excel(result_metrics, class_names, 'evaluation_results.xlsx')
+# List model parameters after conversion
+list_model_parameters(model, "before")
 
-# # Save the results to a text file
-save_metrics_to_file(result_metrics, 'evaluation_results.txt')
+def flip_lsb_mantissa(weight, dtype):
+    """
+    Function to flip the lower 8 bits of the mantissa of a weight in float16.
+    Only applies to float16.
+    """
+    if dtype == torch.float16:
+        # Convert the float16 weight to its binary (16-bit) representation
+        weight_as_int = np.float16(weight).view(np.int16)
+        
+        # Define a mask to isolate and flip the lower 8 bits of the mantissa (bit 0 to 7 in float16)
+        mantissa_lsb_mask = 0x00FF  # Mask to flip lower 8 bits of mantissa for float16
+        
+        # Flip the lower 8 bits of the mantissa by XORing with the mask
+        modified_weight_as_int = weight_as_int ^ mantissa_lsb_mask
+
+        # Convert the modified integer representation back to float16
+        modified_weight = np.int16(modified_weight_as_int).view(np.float16)
+
+        return modified_weight
+    else:
+        # If dtype is not float16, return the weight as it is (no change)
+        return weight
+
+
+
+def flip_lsb_exponent(weight, dtype):
+    """
+    Function to flip the LSB of the exponent of a weight in either float32 or float16.
+    """
+    if dtype == torch.float32:
+        # Convert the float32 weight to its binary (32-bit) representation
+        weight_as_int = np.float32(weight).view(np.int32)
+        
+        # Define a mask to isolate and flip the LSB of the exponent (bit 23 in float32)
+        exponent_lsb_mask = 0x00800000  # This corresponds to bit 23 for float32 (LSB of the exponent)
+        
+        # Flip the LSB of the exponent by XORing with the mask
+        modified_weight_as_int = weight_as_int ^ exponent_lsb_mask
+
+        # Convert the modified integer representation back to float32
+        modified_weight = np.int32(modified_weight_as_int).view(np.float32)
+        
+    elif dtype == torch.float16:
+        # Convert the float16 weight to its binary (16-bit) representation
+        weight_as_int = np.float16(weight).view(np.int16)
+        
+        # Define a mask to isolate and flip the LSB of the exponent (bit 10 in float16)
+        exponent_lsb_mask = 0x0400  # This corresponds to bit 10 for float16
+
+        # Flip the LSB of the exponent by XORing with the mask
+        modified_weight_as_int = weight_as_int ^ exponent_lsb_mask
+
+        # Convert the modified integer representation back to float16
+        modified_weight = np.int16(modified_weight_as_int).view(np.float16)
+
+    return modified_weight
+
+def inject_error_with_probability_and_log(model, data_loader, tokenizer, labels, flip_probability=0.5, log_file='evaluation_log.csv'):
+    """
+    Function to inject MSB errors into the model's weights based on a given probability,
+    evaluate the model, and save the results including original and modified weights into a CSV file.
+    """
+    counter = 0
+    with open(log_file, mode='w', newline='') as file:
+        writer = csv.writer(file)
+        # Write the header for the CSV file
+        writer.writerow(['Layer Name', 'Weight Index', 'Original Weight', 'Modified Weight', 'Accuracy',
+                         'Memory Allocated', 'Memory Reserved', 'Initial Memory Allocated', 'Initial Memory Reserved',
+                         'Final Memory Allocated', 'Final Memory Reserved'])
+
+        for name, param in model.named_parameters():
+            log_and_print(f"Changing layer {name}")
+            if 'weight' in name and param.dtype == torch.float16:  # Only focus on float16 weight tensors
+                dtype = param.dtype
+                log_and_print(f"Changing float16 weights {name}")
+                # Detach the tensor from the graph and clone to avoid inplace modification issues
+                param_flat = param.detach().clone().view(-1)  
+                num_weights = param_flat.numel()
+  
+                # Flip the LSB for all float16 weights in this layer
+                original_values = param_flat.clone()
+                  
+                for i in range(num_weights):
+                    original_value = param_flat[i].item()
+                    modified_value = flip_lsb_mantissa(original_value, dtype)
+                    param_flat[i] = torch.tensor(modified_value, dtype=dtype)
+
+                # Inject the modified weights and evaluate the model
+                with torch.no_grad():
+                    param.data.copy_(param_flat.view(param.shape))  # Update the whole layer with modified values
+
+                # Evaluate the model and get the metrics
+                eval_metrics = evaluate_mixed_precision_model(model, data_loader, tokenizer, labels)
+                log_and_print(f"evaluation {eval_metrics} ")
+                # Log the result to the CSV file
+                counter = counter + 1
+                log_and_print(f"Counter for layer {counter} ")
+                log_and_print(f"Original {original_values[i].item()} Changed {param_flat[i].item()} layer {name}")
+                for i in range(num_weights):
+                    writer.writerow([
+                        name, i, original_values[i].item(), param_flat[i].item(), eval_metrics[0],  # accuracy
+                        eval_metrics[1],  # memory_allocated
+                        eval_metrics[2],  # memory_reserved
+                        'N/A',  # Initial_memory_allocated, not available
+                        'N/A',  # Initial_memory_reserved, not available
+                        'N/A',  # Final_memory_allocated, not available
+                        'N/A'   # Final_memory_reserved, not available
+                    ])
+
+                # Restore the original weights
+                with torch.no_grad():
+                    param.data.copy_(original_values.view(param.shape))  # Restore the original weights
+
+# Free up memory before starting evaluation
+torch.cuda.empty_cache()
+gc.collect()
+
+inject_error_with_probability_and_log(model, data_loader, tokenizer, labels, flip_probability=1, log_file='evaluation_log__float8_e5m2_LSB_inject.csv')
 
 # Optional: print a confirmation message
-print("evaluation_results.xlsx")
+print("evaluation_results_float8_e5m2_errorfloat16.xlsx")
